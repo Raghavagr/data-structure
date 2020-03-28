@@ -2,4 +2,211 @@
 #include<stdlib.h>
 struct node
 {
+  int data;
+  struct node *next;
 };
+struct node *head;
+
+void begininsert();
+void lastinsert();
+void randomins();
+void begindel();
+void lastdel();
+void randomdel();
+
+void main()
+{
+    int choice=0;
+    while(choice!=7)
+    {
+        printf("enter your choice");
+        printf("1).InsterBegin \n2).Insterlast \n3). Randomins \n4). DeleteBegin \n5) Deletelast \n6) Randomdel");
+        scanf("%d\n",&choice);
+        switch(choice)
+        {
+            case 1:
+             begininsert();
+             break;
+            case 2:
+              lastinsert();
+              break;
+            case 3:
+              randomins();
+              break;
+            case 4:
+              begindel();
+              break;
+            case 5:
+              lastdel();
+              break;
+            case 6:
+              randomdel();
+              break;
+            case 7:
+              exit(0);
+              break;
+            default:
+              printf("please enter valid choice");
+        }
+    }
+    
+}
+
+void begininsert()
+{
+    struct node *ptr;
+    ptr=(struct node*)malloc(sizeof(struct node));
+    int item;
+    printf("enter item");
+    scanf("%d",&item);
+    
+    if(ptr==NULL)
+    {
+        printf("overflow");
+    }
+    else
+    {
+        if(head==NULL)
+        {
+            ptr->data=item;
+            ptr->next=NULL;
+            head=ptr;
+        }
+        else
+        {
+            ptr->data=item;
+            ptr->next=head;
+            head=ptr;
+        }
+        printf("node inserted");
+    }
+}
+
+void lastinsert()
+{
+    struct node *ptr,*temp;
+    ptr=(struct node*)malloc(sizeof(struct node));
+    int item;
+    printf("enter item");
+    scanf("%d",&item);
+    
+    if(ptr==NULL)
+    {
+        printf("overflow");
+    }
+    else
+    {
+        ptr->data=item;
+        if(head==NULL)
+        {
+            
+            ptr->next=NULL;
+            head=ptr;
+        }
+        else
+        {
+            temp=head;
+            if(temp->next=NULL)
+            {
+                temp=temp->next;
+            }
+            temp->next=ptr;
+            ptr->next=NULL;
+             printf("node inserted");
+}
+
+void randomins()
+{
+    struct node *ptr;
+    ptr=(struct node*)malloc(sizeof(struct node));
+    int i,loc,item,temp;
+    printf("enter item");
+    scanf("%d",&item);
+    if(ptr==NULL)
+    {
+        printf("overflow");
+    }
+    else
+    {
+        ptr->data=item;
+        printf("enter loc");
+        scanf("%d",&loc);
+         temp=head;
+        for(i=0;i<loc;i++)
+        {
+           temp=temp->next;  
+            if(temp==NULL)
+            {
+                printf("cannot insert");
+            }
+            
+        }
+        ptr ->next = temp ->next; 
+        temp->next=ptr;
+    }
+}
+
+void begindel()
+{
+    struct node *ptr;
+    if(head==NULL)
+    {
+        printf("list empty");
+    }
+    else
+    {
+        ptr=head;
+        head=head->next;
+        free(ptr);
+        printf("node deleted");
+    }
+}
+
+void lastdel()
+{
+    struct node *ptr,*ptr1;
+    if(head==NULL)
+    {
+        printf("list empty");
+    }
+    else if(head->next==NULL)
+    {
+        head=NULL;
+        free(head);
+    }
+    else
+    {
+        ptr=head
+        while(ptr->next!=NULL)
+        {
+          ptr1=ptr;
+          ptr=ptr-next;
+        }
+        ptr1->next=NULL;
+        free(ptr);
+          
+    }
+}
+
+void randomdel()
+{
+    struct node *ptr,*ptr1;
+    int i,loc;
+    printf("enter loc");
+    scanf("%d",&loc);
+    for(i=0;i<loc;i++)
+    {
+        ptr1=ptr;
+        ptr=ptr->next;
+        
+        if(ptr==NULL)
+        {
+            printf("can't delete");
+        }
+        
+    }
+    
+    ptr1->next=ptr->next;
+    free(ptr);
+    printf("node deleted");
+}
