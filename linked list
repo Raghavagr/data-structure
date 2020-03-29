@@ -19,6 +19,12 @@ int main() {
     create(n);
     printf("\ndata has been inserted,: you can display");
     display();
+    printf("\nto display the list in reverse order:-");
+    reverse();
+    display();
+    printf("\ncount the total no. of nodes ");
+    x=count();
+    printf("%d",x);
 	return 0;
 }
 
@@ -98,4 +104,16 @@ void reverse()
         cur=head;
     }
     head=pre;
+}
+int count()
+{
+    struct node *ptr;
+    int count=0;
+    ptr=head;
+    while(ptr!=NULL)
+    {
+        count++;
+        ptr=ptr->next;
+    }
+    return count;
 }
