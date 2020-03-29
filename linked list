@@ -1,4 +1,4 @@
-QUE :- CREATE AND DISPLAY A SINGLY LINKED LIST
+QUE :- CREATE AND DISPLAY A SINGLY LINKED LIST AND ALSO MAKE THE REVERSE FUNCTION TO DISPLAY LIST IN REVERSE ORDER?
 SOL:- IT'S IN C PROGRAMMING LANGUAGE,
 
 #include <stdio.h>
@@ -77,4 +77,25 @@ void display()
             ptr=ptr->next;
         }
     }
+}
+
+void reverse()
+{
+    struct node *pre,*cur;
+    if(head!=NULL)
+    {
+        pre=head;
+        cur=head->next;
+        head=head->next;
+        
+        pre->next=NULL;
+    }
+    while(head!=NULL)
+    {
+        head=head->next;
+        cur->next=pre;
+        pre=cur;
+        cur=head;
+    }
+    head=pre;
 }
