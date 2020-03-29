@@ -26,6 +26,7 @@ int main() {
     x=count();
     printf("%d",x);
 	return 0;
+	
 }
 
 void create(int n)
