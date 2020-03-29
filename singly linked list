@@ -13,6 +13,7 @@ void randomins();
 void begindel();
 void lastdel();
 void randomdel();
+void display();
 
 void main()
 {
