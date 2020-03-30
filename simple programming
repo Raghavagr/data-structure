@@ -6,14 +6,16 @@ struct node
     struct node *next;
 };
 struct node *head;
+
 void create(int);
 void display();
 int count();
 void insertbegin(int);
 void insertlast(int);
+void insertmid(int,int);
 
 int main() {
-    int n,x,item,d;
+    int n,x,item,d,loc;
     printf("enter no. of node");
     scanf("%d",&n);
     printf("\ncreate linked list");
@@ -35,6 +37,16 @@ int main() {
     insertlast(d);
     printf("\nnode inserted");
     printf("\n display list");
+    display();
+    x=count();
+    printf("\n now,Total no.of node:- %d",x);
+    printf("\nenter the loc where node should be ins");
+    scanf("%d",&loc);
+    printf("\nenter the node data");
+    scanf("%d",&item);
+    insertmid(item,loc);
+    printf("\nnode inserted");
+    printf("\n display:-");
     display();
     x=count();
     printf("\n now,Total no.of node:- %d",x);
@@ -160,5 +172,31 @@ void insertlast(int d)
             temp->next=ptr;
         
         }
+    }
+}
+
+void insertmid(int item,int loc)
+{
+    struct node *ptr,*temp;
+    ptr=(struct node*)malloc(sizeof(struct node));
+    if(ptr==NULL)
+    {
+        printf("\nlist is full");
+    }
+    else
+    {
+        ptr->data=item;
+        temp=head;
+        for(int i=0;i<loc-1;i++)
+        {
+            temp=temp->next;
+            if(temp==NULL)
+            {
+                printf("\ncant insert");
+                return;
+            }
+        }
+            ptr->next=temp->next;
+            temp->next=ptr;
     }
 }
