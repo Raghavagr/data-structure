@@ -1,0 +1,120 @@
+#include <stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node *pre;
+    struct node *next;
+};
+struct node *head;
+void create(int);
+void display();
+void begininsert();
+
+int main() 
+{
+    int n;
+    printf("enter the no. of nodes");
+    scanf("%d",&n);
+    printf("\ncreate the doubly linked list:-");
+    create(n);
+    printf("\n list created:- Display");
+    display();
+    printf("\n insert new node at begining");
+    begininsert();
+    printf("\nnode inserted:-Display");
+    display();
+    	return 0;
+}
+
+void create(int n)
+{
+    struct node *ptr,*fnnode;
+    int i,item;
+    if(n>=1)
+    {
+        ptr=(struct node*)malloc(sizeof(struct node));
+        if(ptr!=NULL)
+      {
+          printf("\nenter the data to be inserted");
+          scanf("%d",&item);
+          ptr->data=item;
+          ptr->next=NULL;
+          ptr->pre=NULL;
+          head=ptr;
+          
+          //insert the data for n node
+          for(i=2;i<=n;i++)
+          {
+              fnnode=(struct node*)malloc(sizeof(struct node));
+              if(fnnode!=NULL)
+              {
+                  printf("\ninsert the data for node: %d",i);
+                  scanf("%d",&item);
+                  fnnode->data=item;
+                  fnnode->pre=ptr;
+                  fnnode->next=NULL;
+                  
+                  head->next=fnnode;
+                  head=fnnode;
+              }
+              else
+              {
+                  printf("\nlist Overflow");
+                  break;
+              }
+          }
+      }
+      
+    }
+    
+}
+
+void display()
+{
+    struct node *ptr;
+    int n=1;
+    if(head==NULL)
+    {
+        printf("\nList empty");
+    }
+    ptr=head;
+    while(ptr!=NULL)
+    {
+        printf("\nNode %d data= %d",n,ptr->data);
+        n++;
+        ptr=ptr->next;
+    }
+    
+}
+
+void begininsert()
+{
+    struct node *ptr;
+    int item;
+    ptr=(struct node*)malloc(sizeof(struct node));
+    if(ptr==NULL)
+    {
+        printf("\nOverflow");
+    }
+    else
+    {
+        printf("\nenter the data to be inserted");
+        scanf("%d",&item);
+        if(head==NULL)
+        {
+            ptr->data=item;
+            ptr->next=NULL;
+            ptr->pre=NULL;
+            head=ptr;
+        }
+        else
+        {
+            ptr->data=item;
+            ptr->next=head;
+            ptr->pre=NULL;
+            head->pre=ptr;
+            head=ptr;
+        }
+    }
+}
