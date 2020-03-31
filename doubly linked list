@@ -55,8 +55,8 @@ void create(int n)
                   fnnode->pre=ptr;
                   fnnode->next=NULL;
                   
-                  head->next=fnnode;
-                  head=fnnode;
+                  ptr->next=fnnode;
+                  ptr=fnnode;
               }
               else
               {
@@ -64,8 +64,12 @@ void create(int n)
                   break;
               }
           }
+          
       }
-      
+      else
+      {
+          printf("\nList overflow");
+      }
     }
     
 }
@@ -73,7 +77,7 @@ void create(int n)
 void display()
 {
     struct node *ptr;
-    int n=1;
+    
     if(head==NULL)
     {
         printf("\nList empty");
@@ -81,8 +85,7 @@ void display()
     ptr=head;
     while(ptr!=NULL)
     {
-        printf("\nNode %d data= %d",n,ptr->data);
-        n++;
+        printf("\nNode data= %d",ptr->data);
         ptr=ptr->next;
     }
     
