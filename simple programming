@@ -250,3 +250,36 @@ void lastdelete()
     }
 }
 
+void search()
+{
+    int item,i=0,f;
+    struct node *ptr;
+    ptr=head;
+    if(ptr==NULL)
+    {
+        printf("\n list empty");
+    }
+    else
+    {
+        printf("\ninsert item to be searched");
+        scanf("%d",&item);
+        while(ptr!=NULL)
+        {
+            if(ptr->data==item)
+            {
+                printf("\nItem found at position: %d",i+1);
+            }
+            else
+            {
+                f=1;
+            }
+            i++;
+            ptr=ptr->next;
+        }
+        if(f==1)
+        {
+            printf("\n Item not found");
+        }
+    }
+}
+
