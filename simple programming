@@ -13,6 +13,8 @@ int count();
 void insertbegin(int);
 void insertlast(int);
 void insertmid(int,int);
+void begindelete();
+void lastdelete();
 
 int main() {
     int n,x,item,d,loc;
@@ -50,6 +52,14 @@ int main() {
     display();
     x=count();
     printf("\n now,Total no.of node:- %d",x);
+    printf("\ndelete the node from begining");
+    begindelete();
+    printf("\n node deleted:-view list");
+    display();
+    printf("\ndelete the node from end");
+    lastdelete();
+    printf("\n node deleted:-view list");
+    display();
 }
 
 void create(int n)
@@ -200,3 +210,43 @@ void insertmid(int item,int loc)
             temp->next=ptr;
     }
 }
+
+void begindelete()
+{
+    struct node *ptr;
+    if(head==NULL)
+    {
+        printf("list empty");
+    }
+    else
+    {
+        ptr=head;
+        head=ptr->next;
+        free(ptr);
+    }
+}
+void lastdelete()
+{
+    struct node *ptr,*ptr1;
+    if(head==NULL)
+    {
+        printf("list empty");
+    }
+    else if(head->next=NULL)
+    {
+        head=NULL;
+        free(head);
+    }
+    else
+    {
+        ptr=head;
+        while(ptr->next!=NULL)
+        {
+            ptr1=ptr;
+            ptr=ptr->next;
+        }
+        ptr1->next=NULL;
+        free(ptr);
+    }
+}
+
