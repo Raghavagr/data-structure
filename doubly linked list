@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include<stdlib.h>
+
 struct node
 {
     int data;
@@ -7,24 +8,52 @@ struct node
     struct node *next;
 };
 struct node *head;
+
 void create(int);
 void display();
-void begininsert();
+int count();
+void beginins();
+void lastins();
+void randomins();
+void begdel();
+void lastdel();
 
-int main() 
-{
-    int n;
-    printf("enter the no. of nodes");
-    scanf("%d",&n);
-    printf("\ncreate the doubly linked list:-");
-    create(n);
-    printf("\n list created:- Display");
+int main() {
+	//code
+	int n,x;
+	printf("\nenter no. of nodes");
+	scanf("%d",&n);
+	printf("\n create linled list");
+	create(n);
+	printf("\nlist created:- Display");
+	display();
+	x=count();
+	printf("\ndisplay total Node:- %d",x);
+	printf("\nNode shold ins at beg");
+	beginins();
+	printf("Node inserted:-Display");
+	display();
+	x=count();
+	printf("\ndisplay total Node:- %d",x);
+	printf("\ninsert the node at end");
+	lastins();
+	printf("\nNode inserted:-Display");
+	display();
+	x=count();
+	printf("\ndisplay total Node:- %d",x);
+    printf("\ndel from beg");
+    begdel();
+    printf("\n deleted:- display");
     display();
-    printf("\n insert new node at begining");
-    begininsert();
-    printf("\nnode inserted:-Display");
+    x=count();
+	printf("\ndisplay total Node:- %d",x);
+	printf("\ndelete node from end");
+	lastdel();
+	printf("\n deleted:- display");
     display();
-    	return 0;
+    x=count();
+	printf("\ndisplay total Node:- %d",x);
+	return 0;
 }
 
 void create(int n)
@@ -77,47 +106,185 @@ void create(int n)
 void display()
 {
     struct node *ptr;
-    
+    ptr=(struct node*)malloc(sizeof(struct node));
     if(head==NULL)
     {
-        printf("\nList empty");
+        printf("\nlist empty");
     }
-    ptr=head;
-    while(ptr!=NULL)
+    else
     {
-        printf("\nNode data= %d",ptr->data);
-        ptr=ptr->next;
+        ptr=head;
+        while(ptr!=NULL)
+        {
+            printf("\nData= %d",ptr->data);
+            ptr=ptr->next;
+        }
     }
-    
+}
+int count()
+{
+    int count=0;
+    struct node *ptr;
+    ptr=(struct node*)malloc(sizeof(struct node));
+    if(head==NULL)
+    {
+        printf("\nlist empty");
+        
+    }
+    else
+    {
+        ptr=head;
+        while(ptr!=NULL)
+        {
+            count++;
+            ptr=ptr->next;
+        }
+        return count;
+    }
 }
 
-void begininsert()
+void beginins()
 {
     struct node *ptr;
     int item;
     ptr=(struct node*)malloc(sizeof(struct node));
     if(ptr==NULL)
     {
-        printf("\nOverflow");
+        printf("\nList overflow");
     }
     else
     {
-        printf("\nenter the data to be inserted");
+        printf("\nenter the data item ins at beg");
         scanf("%d",&item);
         if(head==NULL)
         {
             ptr->data=item;
-            ptr->next=NULL;
             ptr->pre=NULL;
+            ptr->next=NULL;
             head=ptr;
         }
         else
         {
             ptr->data=item;
-            ptr->next=head;
             ptr->pre=NULL;
+            ptr->next=head;
             head->pre=ptr;
             head=ptr;
+            
         }
     }
+}
+
+void lastins()
+{
+    struct node *ptr,*temp;
+    int item;
+    ptr=(struct node*)malloc(sizeof(struct node));
+    if(ptr==NULL)
+    {
+        printf("\noverflow");
+    }
+    else
+    {
+        printf("\nenter the data item ins at beg");
+        scanf("%d",&item);
+        if(head==NULL)
+        {
+            ptr->data=item;
+            ptr->pre=NULL;
+            ptr->next=NULL;
+            head=ptr;
+        }
+        else
+        {
+            temp=head;
+            while(temp->next!=NULL)
+            {
+                temp=temp->next;
+            }
+            ptr->data=item;
+            temp->next=ptr;
+            ptr->pre=temp;
+            ptr->next=NULL;
+        }
+    }
+}
+void insertion_specified()  
+{  
+   struct node *ptr,*temp;  
+   int item,loc,i;  
+   ptr = (struct node *)malloc(sizeof(struct node));  
+   if(ptr == NULL)  
+   {  
+       printf("\n OVERFLOW");  
+   }  
+   else  
+   {  
+       temp=head;  
+       printf("Enter the location");  
+       scanf("%d",&loc);  
+       for(i=0;i<loc;i++)  
+       {  
+           temp = temp->next;  
+           if(temp == NULL)  
+           {  
+               printf("\n There are less than %d elements", loc);  
+               return;  
+           }  
+       }  
+       printf("Enter value");  
+       scanf("%d",&item);  
+       ptr->data = item;  
+       ptr->next = temp->next;  
+       ptr -> prev = temp;  
+       temp->next = ptr;  
+       temp->next->prev=ptr;  
+       printf("\nnode inserted\n");  
+   }  
+}  
+
+void begdel()
+{
+    struct node *ptr;
+    ptr=(struct node*)malloc(sizeof(struct node));
+    if(head==NULL)
+    {
+        printf("\nList empty");
+    }
+    else if(head->next==NULL)
+    {
+        head=NULL;
+        free(head);
+    }
+    else
+    {
+        ptr=head;
+        head=head->next;
+        head->pre=NULL;
+        free(ptr);
+    }
+}
+void lastdel()
+{
+    struct node *ptr;
+    ptr=(struct node*)malloc(sizeof(struct node));
+    if(head==NULL)
+    {
+        printf("\nList empty");
+    }
+    else if(head->next==NULL)
+    {
+        head=NULL;
+        free(head);
+    }
+    else
+    {
+        if(ptr->next!=NULL)
+        {
+            ptr=ptr->next;
+        }
+        ptr->pre->next=NULL;
+        free(ptr);
+    }
+    
 }
