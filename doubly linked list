@@ -17,6 +17,7 @@ void lastins();
 void randomins();
 void begdel();
 void lastdel();
+int getmaxnode();
 
 int main() {
 	//code
@@ -53,6 +54,8 @@ int main() {
     display();
     x=count();
 	printf("\ndisplay total Node:- %d",x);
+	y=getmaxnode();
+	printf("\n,Max node data:= %d",y);
 	return 0;
 }
 
@@ -286,5 +289,28 @@ void lastdel()
         ptr->pre->next=NULL;
         free(ptr);
     }
-    
+}
+
+int getmaxnode()
+{
+    struct node *ptr;
+    ptr=(struct node*)malloc(sizeof(struct node));
+    if(head==NULL)
+    {
+        printf("\nList empty");
+    }
+    else
+    {
+        ptr=head;
+        int max=ptr->data;
+        while(ptr!=NULL)
+        {
+            if(ptr->data>max)
+            {
+                max=ptr->data;
+            }
+            ptr=ptr->next;
+        }
+        return max;
+    }
 }
