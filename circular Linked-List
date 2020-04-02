@@ -1,0 +1,99 @@
+#include <stdio.h>
+#include<stdlib.h>
+
+struct node
+{
+    int data;
+    struct node *next;
+};
+struct node *head;
+
+void create(int);
+void display();
+int count();
+
+int main()
+{
+    int n,c;
+    printf("\nEnter the no. of nodes");
+    scanf("%d",&n);
+    printf("\nCreate list:- List created");
+    create(n);
+    printf("\n display the list");
+    display();
+    c=count();
+	printf("\n Total no. of node: %d",c);
+	return 0;
+}
+
+void create(int n)
+{
+    int item;
+    struct node *ptr,*fnnode;
+    if(n>=1)
+    {
+        ptr=(struct node*)malloc(sizeof(struct node));
+        
+        printf("\nenter the data for node 1");
+        scanf("%d",&item);
+        ptr->data=item;
+        ptr->next=NULL;
+        head=ptr;
+        
+        //create n node
+        for(int i=2;i<=n;i++)
+        {
+            fnnode=(struct node*)malloc(sizeof(struct node));
+            printf("\nenter the data for node: %d",i);
+            scanf("%d",&item);
+            fnnode->data=item;
+            fnnode->next=NULL;
+            
+            ptr->next=fnnode;
+            ptr=fnnode;
+        }
+        fnnode->next=head;
+    }
+}
+
+void display()
+{
+    struct node *ptr;
+    ptr=(struct node*)malloc(sizeof(struct node));
+    if(head==NULL)
+    {
+        printf("\nList Empty");
+    }
+    else
+    {
+        ptr=head;
+        while(ptr->next!=head)
+        {
+            printf("\nData= %d",ptr->data);
+            ptr=ptr->next;
+        }
+        printf("\nData= %d",ptr->data);
+    }
+}
+
+int count()
+{
+    struct node *ptr;
+    int count=0;
+    ptr=(struct node*)malloc(sizeof(struct node));
+    if(head==NULL)
+    {
+        printf("\nList Empty");
+    }
+    else
+    {
+        ptr=head;
+        while(ptr!=NULL)
+        {
+            count++;
+            ptr=ptr->next;
+        }
+        return count;
+    }
+}
+
