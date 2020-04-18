@@ -1,16 +1,16 @@
 #include <stdio.h>
 int stack[100],n,i,top=-1,choice=0;
-void push();
-void pop();
+void Push();
+void Pop();
 void display();
 
 int main() {
-    printf("enter the no. of elements");
+    printf("\nenter the no. of elements");
     scanf("%d",&n);
     while(choice!=4)
     {
-        printf("1.Push\n 2.Pop\n3.display\n4.Exit");
-        printf("enter choice");
+        printf("\n1.Push\n 2.Pop\n3.display\n4.Exit");
+        printf("\nenter choice");
         scanf("%d",&choice);
         switch(choice)
         {
@@ -51,7 +51,7 @@ void Push()
     }
     else
     {
-        printf("enter the item");
+        printf("\nenter the item");
         scanf("%d",&item);
         top=top+1;
         stack[top]=item;
@@ -60,7 +60,7 @@ void Push()
 
 void Pop()
 {
-    int item
+    int item;
     if(top==-1)
     {
         printf("\nempty");
@@ -81,6 +81,7 @@ void display()
     {
         for(int i=top;i>=0;i--)
         {
+            printf("\n list of elements are");
             printf("%d\n",stack[i]);
         }
     }
