@@ -1,0 +1,91 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void insert();
+void delete();
+void display();
+
+int maxsize = 5;
+int front=-1,rear = -1;
+int queue[5];
+void main() {
+    int choice;
+    while(choice!=4) {
+        printf("\n1) insert\n2)delete\n3)display\n4) exit");
+        printf("\nenter your choice");    
+        scanf("%d",&choice);
+        switch(choice)
+        {
+            case 1:
+             insert();
+             break;
+            case 2:
+             delete();
+             break;
+            case 3:
+             display();
+             break;
+            case 4:
+             exit(0);
+             break;
+            default:
+             printf("enter valid choice");
+        }
+        
+    }
+}
+
+void insert()
+{
+    int item;
+    printf("enter item to insert");
+    scanf("%d",&item);
+    if(rear == maxsize-1) {
+        printf("overflow");
+    }
+    else {
+        if(front==-1 && rear == -1) {
+           front=0;
+           rear=0;
+        }
+        else {
+            rear = rear+1;
+            printf("\nrear is:%d",rear);
+        }
+        queue[rear] = item;
+        printf("item inserted");
+    }
+}
+
+void delete() {
+    int item;
+    if(front==-1 || front>rear) {
+        printf("underflow");
+    }
+    else {
+        item = queue[front];
+        if(front=rear) {
+            front=-1;
+            rear=-1;
+        }
+        else {
+            front = front+1;
+        }
+        printf("item deleted");
+    }
+}
+
+void display() {
+    int i;
+    if(rear == -1) {
+        printf("queue empty");
+    }
+    else {
+        printf("printing values");
+        for(i=front;i<=rear;i++)
+        {
+            printf("\n%d",queue[i]);
+        }
+    }
+}
