@@ -1,0 +1,66 @@
+Binary Tree = binary tree is a special type of tree in which every non-leaf node contain atmost 2 children
+
+BASIC TERMINOLOGIES:
+   1) root node = a node which have no parent
+   2) leaf node or Terminal nodes = a node which do not have any child
+   3) Degree  = number of child a node have
+   4) Ancestors = Parent Node
+   5) Descendants = Child node
+   
+ 
+   Types - 1) Strict Binary Tree = each non-leaf node has non-empty left and right sub-tree
+           2) Complete / Almost Binary Tree = all the nodes are at same level
+           
+           
+   NODE CREATION
+     struct node {
+         int data;
+         struct node *left;
+         struct node *right;
+       };
+           
+  OPERATIONS
+  
+  1) PRE-ORDER TRAVERSAL
+    - visit root node first
+    - then traverse left sub-tree
+    - then to right sub-tree
+    
+    C-function = recursive implimentation
+        void preOrder(struct node *root)
+        {
+          print("%d\n",root->data);
+          preOrder(root->left);
+          preOrder(root->right);
+        }
+     
+     
+   2) IN-ORDER TRAVERSAL
+      - visit the left sub-tree
+      - then print the root node
+      - then to right sub-tree
+      
+      C-function = recursive implimentation
+        void inOrder(struct node *root)
+        {
+          preOrder(root->left);
+          print("%d\n",root->data);
+          preOrder(root->right);
+        }
+        
+    
+    3) Post-ORDER TRAVERSAL
+      - visit the left sub-tree
+      - then to right sub-tree
+      - then print the root node
+      
+      C-function = recursive implimentation
+        void postOrder(struct node *root)
+        {
+          preOrder(root->left);
+          preOrder(root->right);
+          print("%d\n",root->data);
+        }
+    
+        
+      
