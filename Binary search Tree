@@ -1,0 +1,82 @@
+Binary Search Tree
+ def = binary search tree is a tree in which all the nodes are arranged in special manner
+         - all the nodes present in left sub tree are less then the root node
+         - all the node present at the right sub-tree are greater then the root.
+        
+  Operation
+   -search
+   -insert
+   -delete
+   
+   
+  Node creation
+   struct BSTNode 
+   {
+     int data;
+     BSTNode *left;
+     BSTNode *right;
+   }
+   
+   void Search(struct BSTNode *root, int item)
+   {
+     if(root->data == item || root == Null)
+     {
+       return root;
+     }
+     else if(root->data > item)
+     {
+       return(search(root->left, item));
+     }
+     else
+     {
+       return(search(root->right, item));
+     }
+     
+   }
+   
+   void Insert(int item)
+   {
+     struct BSTNode *ptr,*parentptr,*nodeptr;
+     ptr=(struct BSTNode *)malloc(sizeOf(BSTNode));
+     if(ptr==Null)
+     {
+      printf("can not insert");
+     }
+     else
+     {
+       ptr->data = item;
+       ptr->left = Null;
+       ptr->right = Null;
+       
+       if(root == Null)
+       {
+         root = ptr;
+         root->left = Null;
+         root->right = Null;
+       }
+       else
+       {
+        prentptr = Null;
+        nodeptr = root;
+        while(nodeptr!=null)
+        {
+          parentptr = nodeptr;
+          if(item < nodeptr->data)
+          {
+            nodeptr = nodeptr->left;
+          }
+          else
+          {
+            nodeptr = nodeptr->right;
+          }
+          if(item < parentptr -> data)  
+          {  
+            parentptr -> left = ptr;   
+          }  
+          else   
+          {  
+              parentptr -> right = ptr;   
+          }  
+        }
+     }
+     
