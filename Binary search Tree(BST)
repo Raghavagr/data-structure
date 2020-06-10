@@ -80,3 +80,51 @@ Binary Search Tree
         }
      }
      
+
+DELETE THE NODE
+ -: it is some complex algorithm performed under 3 cases
+   - if the node to be deleted is a leaf node.
+   - if a node to be deleted have only one child(either left or right)
+   - if a node to be deleted have 2 child or whole sub-tree
+   
+ ALGORITHM 
+  
+  function Delete(struct BSTNode *root, int data)
+  {
+    struct BSTNode *temp
+    if(root == Null)
+    {
+     printf("no such element exists");
+    }
+    else if(data < root->data)
+    {
+      root->left = Delete(root->left,data);
+    }
+    else if(data > root->data)
+    {
+      root->right = Delete(root->right,data);
+    }
+    else    // element is found which has to be deleted
+    {
+      if(root->left && root->right) // node have 2 children
+      {
+        temp = FindMax(root->left);
+        root->data = temp->data;
+        root->left = Delete(root->left,root->data);
+      }
+      else  // none of only one child
+      {
+        temp = root;
+        if(root->left == Null)
+        {
+          root = root->right;
+        }
+        else if(root->right == Null)
+        {
+          root = root->left;
+        }
+        free(temp);
+    }
+  }
+  return root;
+ }
