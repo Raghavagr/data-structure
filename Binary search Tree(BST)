@@ -89,7 +89,7 @@ DELETE THE NODE
    
  ALGORITHM 
   
-  function Delete(struct BSTNode *root, int data)
+  void Delete(struct BSTNode *root, int data)
   {
     struct BSTNode *temp
     if(root == Null)
