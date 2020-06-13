@@ -1,0 +1,47 @@
+AVL TREE := AVL Tree is known as height balanced binary search tree in which each node is asssociated with its balance factor.
+ - Balance Factor canbe calculated as-  height of right sub-tree subtracted fron height of left sub-tree
+ 
+     Balance Factor (k) = height (left(k)) - height (right(k))
+     
+     - if balance factor is 1 then left sub-tree is 1 level higher
+     - if balance factor is 0 then bith the left and right sub-tree are at equal height
+     - if balance factor is -1 then right sub-tree is 1 level higher
+     
+     
+     AVL tree is necessary in contrast to BST because BST is helpfull in performing the efficient searches but when the tree is Symmetric
+     - But what is tree is Skewed -> means all the data of tree is at one side
+     
+     -- In that situation the complexity of search become o(n) which is complexity of linear search
+     -- whereas, time complexity of BST is 0(log2 n) --> and it violates the condition
+     
+   --> Here comes the use of AVL tree to make the tree balanced of Symmetric to have efficient searches
+   --> To make the balanced tree we have to do ROTATIONS
+   
+   
+  ROTATIONS
+  - To perform the Rotations it is necessary to identify the specific node A whose Balance Factor(B.F) is Neither 0, 1 or -1
+    And which is nearest ancestor to the inserted node on the path from the inserted node to the root.
+    
+   ROTATION TYPES
+   
+   1) LL ROTATION := inserted node is at left subtree of left sub-tree of node A
+   
+   2) RR ROTATION := inserted node is at right side of right subtree of node A
+   
+   3) LR ROTATION := Inseted node is at right side of left subtree of node A
+   
+   4) RL ROTATION := Imserted node is at left side of right subtree of node A.
+   
+   
+  TRICK TO SOLVE THE EACH TYPE OF ROTATIONS
+   - For LL & RR Rotation Identify the node A and B and then make A as child of B.
+   - For LR & RL Rotations Identify the node A, B and C then make A and B as child of C.
+   
+   A node is simple to identify
+   B is the the node and child of A in which direction insertion is performed
+   C is the node and child of B in which direction insertion is performed.
+   
+   
+   
+    
+       
