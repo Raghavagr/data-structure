@@ -1,1 +1,37 @@
 
+Linear Search := It is also known as sequential search. In this we simply traverse through the array and match our search element with each 
+                 element in list from begining. When our element is found we return its position else it return Null.
+                 
+  IMPLIMENTATION
+  
+  #include<iostream.h>
+  using namespace std;
+  int main() 
+  {
+     int array[40];
+     int n,se,flag;
+     cout<<"enter the no. of elements";
+     cin>>n;
+     cout<<"enter the elements";
+     for(int i=0;i<=n;i++) {
+         cin>>a[i];
+     }
+     cout<<"\nenter the search element";
+     cin>>se;
+     
+     for(int i=0;i<n;i++) {
+        if(a[i] == se) {
+           flag = i+1;
+           break;
+        }
+        else {
+           flag = 0;
+        }
+     }
+     if(flag!=0) {
+      cout<<"\nelement found at pos"<<flag;
+     }
+      else {
+        cout<<"\nelement not found";
+       }
+  }
