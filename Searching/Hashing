@@ -1,0 +1,12 @@
+Hash Table 
+ :- mostly it is an array to store the dataset.It is an data structure.
+ 
+Hash Function
+ :- A hash function is any function which is used to map the dataset of arbitary size to dataset of fixed size 
+      which falls into the hash table.
+   - The values returned by the hash function are known as hash values, hash sums or simply hashes.
+   
+  Hashing
+  - In hashing, large keys are converted into small ones by using hash functions and then values are stored in data structure called hash
+     table.
+ 
