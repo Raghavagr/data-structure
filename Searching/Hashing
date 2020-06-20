@@ -4,9 +4,77 @@ Hash Table
 Hash Function
  :- A hash function is any function which is used to map the dataset of arbitary size to dataset of fixed size 
       which falls into the hash table.
+   - It can take the dataset of any size and map it to fixed size.
    - The values returned by the hash function are known as hash values, hash sums or simply hashes.
    
   Hashing
   - In hashing, large keys are converted into small ones by using hash functions and then values are stored in data structure called hash
      table.
+     
+     
+  Hash function is used to compute the index of any size data to fised size.
+  Collision =  whenever we are computing a index of key-value pair and map it with hash function to find the index it can happen that 
+               two values occupy the same index and this is known an Collision.
+         
+   - We have to avoid this collision so we impliment the algorithm known as collision free.
+   - we cannot remove all the collision but yes somehow we can reduce the collisions.
+   
+ With the help of hash function searching becomes very efficient -> because we came to know the index of each value and we can search it by
+                                                                    its index very easily
+      Thus, the time complexity of hash function search becomes O(1).
+      
+    But when we don't know the index we need to apply the linear search by comparing each value.
+    
+   And hashing is the process to map the key-value pair to compute the index is known as hashing.
+   
+  Parameters Of Good Hash Function
+    - easy to compute
+    - Even distribution
+    - Minimize Collision
+    
+   it is easy to compute like eg -> we have key-value pair and map between 0-9 index only so we can easily implement it 
+                                     for eg :-  (x)%10 we can modulo by 10 so output will always between 0-9.
+                                     
+    Even distribution :- if we have less memory slots and hash function gives the resuly only at one side then data is not store on each memory slot.
+                         so, it has to be evenly distributed to occupy each slot.
+                         
+                         
+   HASH FUNCTION - EXAMPLE -1 
+       
+       Int hash(int x) {
+          return(x % 10);
+       }
+       
+    HASH FUNCTION - EXAMPLE -2
+          # suppose we are given keys in range of 0 to 999 and hash table of size 10 then index it.
+        so, we keep
+        
+         0-99  = slot 0
+         100-199 = slot 1
+         200-299 = slot 2
+         300-399 = slot 3
+         400-499 = slot 4
+         .
+         .
+         .
+         900-999 = slot 9
+          
+     HASH FUNCTION - EXAMPLE -3
+           
+       - A good hash function is to use with integer keys values is Mid-Square-Method.
+       - A Mid-Square-Method squares the key-value, and then takes out the middle r bits of result, giving a value in range 0-2r-1.
+       
+     HASH FUNCTION - EXAMPLE -4
+        
+        int hash(char s[],int m) {
+          int i, sum=0;
+          for(i=0;s[i];i++) {
+              sum = sum + a[i];
+            }
+            return(sum % m);
+        }
+       
+         
+          
+   
  
