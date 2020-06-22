@@ -1,0 +1,71 @@
+
+#include<iostream>
+using namespace std;
+void mergeSort(int[],int,int);
+void merge(int[],int,int,int);
+
+int main()
+{
+	int a[100];
+	int n,i;
+	cout<<"enter size of array";
+	cin>>n;
+	for(i=0;i<n;i++)
+	{
+		cin>>a[i];
+	}
+	mergeSort(a,0,n-1);
+	for(i=0;i<n;i++)
+	{
+		cout<<"\n"<<a[i];
+	}
+}
+
+void mergeSort(int a[],int beg,int end) {
+    int mid;
+    if(beg <= end) {
+        mid = (beg+end)/2;
+        mergeSort(a,beg,mid);
+        mergeSort(a,mid+1,end);
+        merge(a,beg,mid,end);
+    }
+}
+
+void merge(int a[],int beg,int mid,int end) {
+    int i,j,k=0;
+    int temp[10];
+    i=beg;
+    j=mid+1;
+    
+    while(i<=mid && j<=end) {
+        if(a[i] < a[j]) {
+            temp[k] = a[i];
+            i++;
+            k++;
+        }
+        else {
+            temp[k] = a[j];
+            j++;
+            k++;
+        }
+    }
+    
+    // copy the remaining elements of 1st list
+    while(i<=mid) {
+        temp[k] = a[i];
+            i++;
+            k++;
+    }
+    
+    // copy the remaining elements of 2nd list
+    while(j<=end) {
+        temp[k] = a[j];
+            j++;
+            k++;
+    }
+    
+    // copy the temp[] again to original(a[])
+    for(i=beg;i<=end;i++) {
+        a[i] = temp[i];
+    }
+}
