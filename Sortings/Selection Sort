@@ -1,0 +1,54 @@
+selection Sort:  It is very efficient technique to place a element at its correct place in one time. 
+
+Working Logic:
+  - select the smallest value in the list.
+  - Swap the smallest value with the first value of the list.
+  - Again select the smallest value from the list(excluding the first value).
+  - then swap that smallest value with second element in list.
+  - Keep doing this untill the n-1 times in array.
+  
+  
+  * In this
+    - we will use the procedure as 
+      MIN(a,k,n)
+      - a is array
+      - k is begin with(index)
+      - n is no. of elements(size)
+      
+      
+  Implementation
+  
+#include <stdio.h>
+int Min(int [],int,int);
+
+int main()
+{
+    int arr[10] = {23,45,39,77,51,18,27,63,32,71};
+    int loc,k,temp;
+    for(k=0;k<10;k++) {
+        loc = Min(arr,k,10);
+        temp = arr[k];
+        arr[k] = arr[loc];
+        arr[loc] = temp;
+    }
+    
+    printf("sorted array is");
+    for(k=0;k<10;k++) {
+        printf(" %d",arr[k]);
+    }
+}
+
+int Min(int arr[],int k,int n) {
+    int j,loc,min;
+    min = arr[k];
+    loc = k;
+    
+    for(j=k+1;j<=n-1;j++) {
+        if(min > arr[j]) {
+            min = arr[j];
+            loc = j;
+        }
+    }
+    return loc;
+}
+
