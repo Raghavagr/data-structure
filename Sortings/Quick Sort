@@ -1,0 +1,59 @@
+Quick Sort := Quick sort is a sorting technique which follows the Divide and Conquer Technique to sort the array.
+
+WORKING LOGIC :
+  - PROCEDURE quick
+  - ALGORITHM quickSort
+  
+ # PROCEDURE quick
+ 
+ QUICK(A,N,BEG,END,LOC) ->  here, A is an array with N no. of elements. And BEG & END parameters contain starting and end loc of array
+                             and LOC keeps track of BEG position.
+                             
+   1) SET LEFT=BEG, RIGHT=END & LOC = BEG
+   
+   2) Scan from RIGHT to LEFT
+       a) repeat While(A[LOC] <= A[RIGHT] && LOC != RIGHT])
+             - RIGHT = RIGHT -1;
+       b) if LOC == RIGHT 
+            - simply return
+       c) if A[LOC] >= A[RIGHT]
+           - Swap both LOC & RIGHT
+           - also set LOC = RIGHT
+           
+    3) Scan from LEFT to RIGHT 
+       a) repeat While(A[LEFT] <= A[LOC] && LOC != RIGHT])
+             - LEFT = LEFT + 1;
+       b) if LOC == LEFT 
+            - simply return
+       c) if A[LEFT] >= A[LOC]
+           - Swap both LOC & LEFT
+           - also set LOC = LEFT
+           
+# ALGORITHM quickSort
+   
+  QUICKSORT() : it sorts an array A with N elements
+         
+    1) set TOP = -1 
+    2) if N>1
+       - then TOP = TOP + 1
+       - LOWER[TOP] = 0
+       - UPPER[TOP] = N-1
+    3) Reapeat the step from 4 to 7 until TOP != -1
+    4) POP sublist from Stack 
+       - set BEG = LOWER[TOP]
+       - END = UPPER[TOP]
+       - TOP = TOP-1
+    5) CALL QUICK(A,N,BEG,END,LOC)
+    6) Push left Sublist onto Stack
+        - if(BEG < LOC-1)
+           - then, TOP = TOP +1
+           - LOWER[TOP] = BEG
+           - UPPER[TOP] = LOC-1
+    7) Push right sublist into stack
+        - if(LOC+1 < END)
+           - then, TOP = TOP +1
+           - LOWER[TOP] = LOC + 1
+           - UPPER[TOP] = END
+
+    EXIT.
+   
