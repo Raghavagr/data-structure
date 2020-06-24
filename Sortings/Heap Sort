@@ -1,0 +1,28 @@
+Heap Sort := Heap sort sorts the array by creating min heap and max heap.
+
+Logic: - Insert all the elements of an unsorted array into heap.
+        - Remove the maximum elements of heap(root node element) and replace it with the last value of array.
+        - Heapify
+        - repeat the process untill heap remains with single element.
+        
+        
+ ALGORITHM:-  HEAPSORT(A,N): An array with N no. of elements is given. This algorithm sorts the element of A.
+ 
+ 1) Build the heap[H]
+    h = createHeap(N),   BuildHeap(h,A,N)
+    
+ 2) Initialize :
+      oldSize = h->count
+      
+ 3) Sort A by repeatedly deleting the root of h
+     for(i=n-1;i>0;i--) {
+        a) temp = h->array[0]
+           h->array[0] = h->array[h->count-1]
+           h->array[h->count-1] = temp
+           
+        b) h->count;
+        c) dercolate(h,i)
+     }
+     
+ 4) h->count = oldSize
+ 5) exit.
