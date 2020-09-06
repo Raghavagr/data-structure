@@ -24,7 +24,7 @@ Linear Search := It is also known as sequential search. In this we simply traver
            flag = i+1;
            break;
         }
-        else {
+         else {
            flag = 0;
         }
      }
@@ -35,3 +35,56 @@ Linear Search := It is also known as sequential search. In this we simply traver
         cout<<"\nelement not found";
        }
   }
+
+
+URL - https://ide.geeksforgeeks.org/QNa0OR2VNV
+
+IMPLIMENTATION somewhat chng
+
+#include <stdio.h>
+
+int main() {
+    int a[10];
+	int n,i,se,pos,f=0;
+	printf("enter the size of array");
+	scanf("%d",&n);
+	printf("\nenter elements");
+	for(i=0;i<n;i++)
+	{
+	    scanf("%d",&a[i]);
+	}
+	printf("\nenter search element");
+	scanf("%d",&se);
+	for(i=0;i<n;i++)
+	{
+	    if(a[i] == se)
+	    {
+	       f=1; pos=i+1; 
+	    }
+	}
+	if(f!=0) {
+	    printf("\n%d found at pos %d",se,pos);
+	}
+	else
+	    {
+	        printf("\n%d not found",se);
+	    }
+	
+
+}
+
+
+
+OUTPUT
+5
+3
+7
+2
+4
+9
+2
+
+enter the size of array
+enter elements
+enter search element
+2 found at pos 3
