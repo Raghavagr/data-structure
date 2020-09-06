@@ -1,0 +1,36 @@
+https://ide.geeksforgeeks.org/sYRxLljhmR
+
+QUE) WAP to insert a element in an array.
+#include <stdio.h>
+
+int main() {
+    int a[10];
+	int n,i,pos,item;
+	printf("enter the size of array");
+	scanf("%d",&n);
+	printf("\nenter elements");
+	for(i=0;i<n;i++)
+	{
+	    scanf("%d",&a[i]);
+	}
+	printf("\noriginal_array\n");
+	for(i=0;i<n;i++)
+	{
+	    printf("%d\n",a[i]);
+	}
+	printf("enter the pos where you want to insert element");
+	scanf("%d",&pos);
+	printf("\nenter the item to insert");
+	scanf("%d",&item);
+	for(i=n-1;i>=pos-1;i--)
+	{
+	    a[i+1] = a[i];
+	}
+	a[pos-1] = item;
+	printf("\narray is:\n");
+	for(i=0;i<=n;i++)
+	{
+	    printf("%d\n",a[i]);
+	}
+}
+
