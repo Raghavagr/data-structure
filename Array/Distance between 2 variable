@@ -1,0 +1,115 @@
+
+
+
+1st Method) Simple Method (Using 2 Loops)
+
+# Steps 1) the outer loop picks all the elements of arr[] one by one. 
+        2) the inner loop will move from next element to outer loop
+        3) if element picked by outer and inner loop are same then update the min_distance which we calculated 
+        
+        
+URL : 
+
+CODE:
+
+// minimum distance between 2 numbers using 2 loops
+#include <stdio.h>
+#include <stdlib.h>
+# include <limits.h>
+
+int minimumDistance(int[],int, int, int);
+
+int main() {
+	int arr[] = {3,5,4,2,6,5,6,6,5,4,8,3};
+	int n = sizeof(arr) / sizeof(arr[0]);
+	int x=3, y=6;
+	printf("minimum distance between %d & %d is:",x,y);
+	int dist = minimumDistance(arr,n,x,y);
+	printf("%d",dist);
+	
+}
+
+int minimumDistance(int arr[],int n, int x, int y)
+{
+   int i,j;
+   int min_dist = INT_MAX;
+   for(i=0;i<n;i++)
+   {
+       for(j=i+1;j<n;j++)
+       {
+           if(x==arr[i] && y==arr[j] || y==arr[i] && x==arr[j] && min_dist > abs(i-j))
+           {
+               min_dist = abs(i-j);
+           }
+       }
+   }
+   return min_dist;
+}
+
+        
+     
+2nd METHOD) TRICKY METHOD
+
+STEPS: 1) traverse the array from left side and stop when any one of x or y is found and store the index in a variable called prev.
+       2) now start traversing the array after the prev index:
+         i) if at any of the index of i matches the x or y the check if it is same or different to prev
+           A) if it is different from prev then update the min_dist.
+           B) if is is same as prev then update the prev.
+           
+           
+ URL: https://ide.geeksforgeeks.org/253NUxXCFT
+ 
+ CODE:
+ 
+// minimum distance between 2 numbers
+#include <stdio.h>
+#include <stdlib.h>
+# include <limits.h>
+
+int minimumDistance(int[],int, int, int);
+
+int main() {
+	int arr[] = {3,5,4,2,6,5,6,6,5,4,8,3};
+	int n = sizeof(arr) / sizeof(arr[0]);
+	int x=3, y=6;
+	printf("minimum distance between %d & %d is:",x,y);
+	int dist = minimumDistance(arr,n,x,y);
+	printf("%d",dist);
+	
+}
+
+
+int minimumDistance(int arr[],int n, int x, int y)
+{
+  int i,prev;
+  int min_dist = INT_MAX;
+  
+  // check if any of index matches the x or y.
+  for(i=0;i<n;i++) {
+    if(x==arr[i] || y==arr[i])
+    {
+        prev = i;
+        break;
+    }
+  }
+  
+  //Traverse the array after the prev
+  for( ; i<n; i++)
+  {
+      if(arr[i] == x || arr[i] == y)
+      {
+          // if the current element matches with any of 2 x or y 
+          // check if current element and prev element
+          // also check if this value is smaller then min_dist
+          if(arr[prev] != arr[i] && (i-prev) < min_dist) {
+              min_dist = i-prev;
+              prev = i;
+          }
+          else {
+              prev = i;
+          }
+      }
+  }
+  return min_dist;
+}
+
