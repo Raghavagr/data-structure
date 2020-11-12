@@ -1,0 +1,28 @@
+// QUE)  Write a C++ program to find the largest element of a given array of integers.
+
+#include <iostream>
+using namespace std;
+
+int findGreatest(int arr[], int size) {
+    int greatest = 0;
+    for(int i=0; i<size; i++) {
+        if (arr[i] > greatest) {
+            greatest = arr[i];
+        }
+    }
+    return greatest;
+}
+
+int main() {
+    int n;
+	int arr[100];
+	cout<<"enter the size of array"<<endl;
+	cin>>n;
+	cout<<"enter elements";
+	for(int i=0;i<n;i++) {
+	    cin>>arr[i];
+	}
+	int max = findGreatest(arr,n);
+	cout<<"\nthe greatest ele in array is: "<<max<<endl;
+	return 0;
+}
