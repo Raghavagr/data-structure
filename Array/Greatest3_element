@@ -1,4 +1,5 @@
 // URL: https://ide.geeksforgeeks.org/VY2EvncDEB
+// 2nd code URL is below it..
 
 #include <iostream>
 using namespace std;
@@ -40,3 +41,44 @@ int main() {
 	//cout<<"\nthe greatest ele in array is: "<<max<<endl;
 	return 0;
 }
+
+
+// 			*********	SHORT AND USEFULL SOLUTION      ***********
+//URL:	https://ide.geeksforgeeks.org/QdaM3QE3rD
+
+#include <iostream>
+using namespace std;
+
+void three_largest(int arr[], int size) {
+    int first,second,third;
+    //first=second=third = INT_MIN;
+    first=second=third = 0;
+    if(size < 3) {
+        cout<<"\n Invalid Input"<<endl;
+    }
+    
+    for(int i=0;i<size;i++) {
+        if(arr[i] > first) {
+            third = second;
+            second = first;
+            first = arr[i];
+        }
+        else if(arr[i] > second) {
+            third = second;
+            second = arr[i];
+        }
+        else if(arr[i] > third) {
+            third = arr[i];
+        }
+    }
+    cout<<"\nThree Largest int is: "<<first<<" "<<second<<" "<<third<<endl;
+}
+
+int main() {
+	int arr[] = {2,5,7,12,9,23,21};
+	int n = sizeof(arr) / sizeof(arr[0]);
+	cout<<"\ngettinh three largest"<<endl;
+	three_largest(arr,n);
+	return 0;
+}
+
