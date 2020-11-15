@@ -1,0 +1,23 @@
+#include <iostream>
+#include<functional>
+#include <algorithm>
+
+using namespace std;
+
+void findKLargest(int arr[], int n, int k) {
+    sort(arr, arr+n, greater<int>());
+    cout<<"the "<<k<<" greatest int is: "<<endl;
+    for(int i=0; i<k; i++) {
+        cout<<arr[i];
+    }
+}
+
+int main() {
+	int arr[] = {2,4,7,13,17,23};
+	int n,k;
+	n = sizeof(arr);
+	cout<<"how much greater element you want: "<<endl;
+	cin>>k;
+	findKLargest(arr,n,k);
+	return 0;
+}
