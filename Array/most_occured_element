@@ -1,0 +1,42 @@
+// QUE) Write a C++ program to find the most occurring element in an array of integers.
+
+// URL: https://ide.geeksforgeeks.org/ssSyYDvZ2Q
+
+#include <iostream>
+using namespace std;
+
+void findOcuurenceElement(int arr[], int size) {
+    int max_count = 0;
+    for(int i=0; i<size; i++) {
+        int count=1;
+        for(int j=i+1; j<size; j++) {
+            if(arr[i] == arr[j]) {
+                count++;
+            }
+        }
+    
+        if(count > max_count) {
+            max_count = count;
+        }
+    }
+    
+    for(int i=0; i<size; i++) {
+        int count=1;
+        for(int j=i+1; j<size; j++) {
+            if(arr[i] == arr[j]) {
+                count++;
+            }
+        }
+    
+        if(count == max_count) {
+            cout<<arr[i]<<" ";
+        }
+    }
+}
+
+int main() {
+	int arr[] = {3,2,7,17,7,14,7,29};
+	int n = sizeof(arr) / sizeof(arr[0]);
+	findOcuurenceElement(arr,n);
+	return 0;
+}
