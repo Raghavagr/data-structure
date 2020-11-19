@@ -1,0 +1,41 @@
+Given a sorted array arr[] of distinct integers. Sort the array into a wave-like array and return it. 
+In other words, arrange the elements into a sequence such that a1 >= a2 <= a3 >= a4 <= a5..... (considering the increasing lexicographical order).
+
+// sol: if odd no. of input are there  SUPPOSE: A,B,C,D,E
+      then, a >= b <= d >= c <=e
+    &  
+      if even no. of input are there  SUPPOSE: A,B,C,D,E,F
+      then, a >= b <= d >= c <= f >= e  
+      
+  we have to swap the int on the interval of 2..
+  
+  // URL: https://ide.geeksforgeeks.org/fSAETB3k2w
+ 
+ //CODE
+ #include <iostream>
+using namespace std;
+
+void waveForm(int arr[], int n) {
+    int temp;
+    for(int i=1; i<n; i+=2) {
+        temp = arr[i];
+        arr[i] = arr[i-1];
+        arr[i-1] = temp;
+    }
+    
+    
+    for(int i=0; i<n; i++) {
+        cout<<arr[i]<<" ";
+    }
+}
+
+int main() {
+	int arr[] = {1,2,3,4,5,6};
+	int n = sizeof(arr)/sizeof(arr[0]);
+	waveForm(arr, n);
+	return 0;
+}
+
+// CAN ALSO BE WRIITEN AS
+
+https://practice.geeksforgeeks.org/problems/wave-array-1587115621/0/?category[]=Arrays&difficulty[]=0&page=1&query=category[]Arraysdifficulty[]0page1
