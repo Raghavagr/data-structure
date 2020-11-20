@@ -1,0 +1,55 @@
+// WAP TO FIND THE MAX LENGTH OF SUBASRRAY UNTILL NON-NEGATIVE INT ARRIVE
+
+// URL: https://ide.geeksforgeeks.org/8PB9y7XsyT
+
+//
+#include <iostream>
+using namespace std;
+
+int maxLengthSubArray(int arr[], int n) {
+    int res = 0;
+    //int count[10];
+    for(int i=0; i<n; i++) {
+        int curcount = 0;
+        while(i < n && arr[i] >= 0) {
+            curcount++;
+            i++;
+        }
+        
+        // update the maximum length if required
+        res = max(res, curcount);
+        
+        // NOT WRONG BUT COMPLEX METHOD......
+        /*
+        if(arr[i] < 0) {
+            count[i] = sum;
+            sum = 0;
+        }
+        
+        else {
+            int j=0;
+            count[j] = sum;
+            j++;
+            sum = 0;
+        }
+        */
+    }
+    /*
+    int max =0;
+    for(int i=0;i<n;i++) {
+        if(count[i] > max) {
+            max = count[i];
+        }
+    }
+    */
+    return res;
+}
+
+int main() {
+	int arr[] = {2,3,4,-1,-2,1,5,6,3};
+	int n = sizeof(arr)/ sizeof(arr[0]);
+	cout<<"size of array: "<<n<<endl;
+	cout<<maxLengthSubArray(arr,n)<<endl;
+	
+	return 0;
+}
