@@ -1,0 +1,37 @@
+//
+
+// URL: https://ide.geeksforgeeks.org/tSDgx3QtWF
+
+#include <iostream>
+#include<vector>
+
+using namespace std;
+
+int main() {
+	int t,n,k;
+	cin>>t;
+	while(t>0) {
+	    cin>>n>>k;
+	    vector<int> v(n,0);
+	    for(int i=0; i<k; i++) {
+	        int x;
+	        cin>>x;
+	        v[x-1]++;
+	    }
+	    cout<<endl;
+	    vector<int> :: iterator iter;
+	    for(iter = v.begin(); iter != v.end(); iter++) {
+	        cout<<(*iter)<<" ";
+	    }
+	    cout<<endl;
+	    
+	    int cnt=0;
+	    for(int i=0; i<n; i++) {
+	        cnt = cnt + v[i];
+	        cout<<cnt<<" ";
+	    }
+	    cout<<endl;
+	    t--;
+	}
+	return 0;
+}
