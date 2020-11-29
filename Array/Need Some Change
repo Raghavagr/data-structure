@@ -1,0 +1,32 @@
+// QUE) Given an array A of N positive integers. The task is to swap every ith element of the array with (i+2)th element.
+
+// URL: https://ide.geeksforgeeks.org/MLArsMSrsG
+
+#include <iostream>
+using namespace std;
+
+int Swap(int arr[], int n) {
+    for(int i=0; i+2<n; i++) {
+        int temp = arr[i];
+        arr[i] = arr[i+2];
+        arr[i+2] = temp;
+    }
+    for(int i=0; i<n; i++) {
+	    cout<<arr[i]<<" ";
+	}
+}
+
+int main() {
+	int arr[100];
+	int n,count=0;
+	cout<<"enter size of arr"<<endl;
+	cin>>n;
+	cout<<"enter elements"<<endl;
+	for(int i=0; i<n; i++) {
+	    cin>>arr[i];
+	}
+	cout<<"swap elements"<<endl;
+	Swap(arr,n);
+	
+	return 0;
+}
