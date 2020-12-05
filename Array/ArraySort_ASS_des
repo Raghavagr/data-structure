@@ -1,0 +1,55 @@
+// SORT ARRAY IN ASS AND DES ORDER
+
+// URL: https://ide.geeksforgeeks.org/39c715ad3l
+
+//CODE:
+#include <iostream>
+using namespace std;
+
+// function to sort in Ascending order
+int sortAss(int arr[], int n) {
+    int temp;
+    for(int i=0; i<n; i++) {
+        for(int j=0; j<n-1-i; j++) {
+            if(arr[j] > arr[j+1]) {
+            temp = arr[j];
+            arr[j] = arr[j+1];
+            arr[j+1] = temp;
+        }
+        }
+    }
+        
+    for(int i=0; i<n; i++) {
+	    cout<<arr[i]<<" ";
+	}
+}
+
+// function to sort in Descending order
+//      -> sort in ass and print in reverse order
+int sortDes(int arr[], int n) {
+    int temp;
+    for(int i=0; i<n; i++) {
+        for(int j=0; j<n-1-i; j++) {
+            if(arr[j] > arr[j+1]) {
+                temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+    
+    // print in des order
+    for(int i=n-1; i>=0; i--) {
+        cout<<arr[i]<<" ";
+    }
+}
+
+int main() {
+	int arr[] = {5,2,19,17,11,7};
+	int n = sizeof(arr) / sizeof(arr[0]);
+	cout<<"sort in Ascending order: "<<endl;
+	sortAss(arr,n);
+	cout<<"\nsort in Descending order: "<<endl;
+	sortDes(arr,n);
+	return 0;
+}
