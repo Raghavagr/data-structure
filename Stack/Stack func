@@ -1,0 +1,86 @@
+// IMPLIMENTING ALL THE STACK OPERATIONS
+
+// URL: https://ide.geeksforgeeks.org/YIKsKQYOyX
+
+// STACK --> LIFO
+
+//code
+#include <stdio.h>
+#include <stdlib.h>
+
+struct stack {
+  int size;
+  int top;
+  int *arr;
+};
+
+int isEmpty(struct stack *ptr) {
+    if(ptr->top == -1) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+
+int isFull(struct stack *ptr) {
+    if(ptr->top == ptr->size - 1) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+
+int Push(struct stack *ptr, int item) {
+    if(isFull(ptr)) {
+        printf("\nStack Overflow!.. Cannot Insert");
+    }
+    else {
+        ptr->top++;
+        ptr->arr[ptr->top] = item;
+    }
+}
+
+int Pop(struct stack *ptr) {
+    if(isEmpty(ptr)) {
+        printf("Underflow!.. Cannot POP from stack.");
+    }
+    else {
+        int val = ptr->arr[ptr->top];
+        ptr->top = ptr->top -1;
+        return val;
+    }
+}
+
+int main() {
+	struct stack *sp = (struct stack *)malloc(sizeof(struct stack));
+	// sp is nothing but an instance of structure which will store address, so we have to provide it a memory.
+	// now in sp i can store
+	sp->size = 10;
+	sp->top = -1;
+	sp->arr = (int *)malloc(sp->size * sizeof(int *));
+	
+	printf("before pushing isFull: %d\n", isFull(sp));
+	printf("before pushing isEmpty: %d\n", isEmpty(sp));
+	
+	Push(sp, 7);
+	Push(sp,24);
+	Push(sp,56);
+	Push(sp,17);
+	Push(sp,39);
+	Push(sp,42);
+	Push(sp,51);
+	Push(sp,77);
+	Push(sp,99);
+	Push(sp,73);
+	Push(sp,66);
+	
+	printf("\nafter pushing isFull: %d\n", isFull(sp));
+	printf("after pushing isEmpty: %d\n", isEmpty(sp));
+	
+	// POPING
+	printf("Popped %d from the stack:", Pop(sp));
+	
+	return 0;
+}
