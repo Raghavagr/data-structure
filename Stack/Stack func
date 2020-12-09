@@ -2,6 +2,9 @@
 
 // URL: https://ide.geeksforgeeks.org/YIKsKQYOyX
 
+FULL CODE USING PEEK FUNCTION
+// URL:	https://ide.geeksforgeeks.org/ZJStbPdiR0
+
 // STACK --> LIFO
 
 //code
@@ -53,6 +56,17 @@ int Pop(struct stack *ptr) {
     }
 }
 
+int Peek(struct stack *ptr, int i) {
+    int arrInd = ptr->top - i +1;
+    if(arrInd < 0) {
+        printf("\nNot a valid position for the stack\n");
+        return -1;
+    }
+    else {
+        return ptr->arr[arrInd];
+    }
+}
+
 int main() {
 	struct stack *sp = (struct stack *)malloc(sizeof(struct stack));
 	// sp is nothing but an instance of structure which will store address, so we have to provide it a memory.
@@ -80,7 +94,14 @@ int main() {
 	printf("after pushing isEmpty: %d\n", isEmpty(sp));
 	
 	// POPING
-	printf("Popped %d from the stack:", Pop(sp));
+	printf("Popped %d from the stack:\n", Pop(sp));
+	
+	// printing values from the stack 
+	
+	//Peeking-> to display all the stack elements
+	for(int j=1; j<=sp->top +1; j++) {
+	    printf("the value at position %d is %d\n",j,Peek(sp,j));
+	}
 	
 	return 0;
 }
