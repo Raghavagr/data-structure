@@ -1,11 +1,12 @@
 // IMPLIMENTING ALL THE STACK OPERATIONS
 
-// URL: https://ide.geeksforgeeks.org/YIKsKQYOyX
-
 FULL CODE USING PEEK FUNCTION
 // URL:	https://ide.geeksforgeeks.org/ZJStbPdiR0
 
 // STACK --> LIFO
+
+// ALL FUNCTIONS IN STACK UNDER THIS URL:   https://ide.geeksforgeeks.org/RN6OHwzgiY
+
 
 //code
 #include <stdio.h>
@@ -56,6 +57,14 @@ int Pop(struct stack *ptr) {
     }
 }
 
+int stackTop(struct stack *ptr) {
+    return ptr->arr[ptr->top];
+}
+
+int stackBottom(struct stack *ptr) {
+    return ptr->arr[0];
+}
+
 int Peek(struct stack *ptr, int i) {
     int arrInd = ptr->top - i +1;
     if(arrInd < 0) {
@@ -102,6 +111,12 @@ int main() {
 	for(int j=1; j<=sp->top +1; j++) {
 	    printf("the value at position %d is %d\n",j,Peek(sp,j));
 	}
+	
+	//printing the top element
+	printf("\nThe top most value in stack is: %d\n", stackTop(sp));
+	
+	//printing the bottom element
+	printf("The bottom most value in stack is: %d\n", stackBottom(sp));
 	
 	return 0;
 }
