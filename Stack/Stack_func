@@ -1,5 +1,9 @@
 // STACK USING LINKED LIST.
 
+// CODE WITH PEEK FUNCTION
+// URL:	https://ide.geeksforgeeks.org/wqCo6dCH78
+
+// CODE WITHOUT PEEK AND SLIGHT CHNGES..
 // URL: https://ide.geeksforgeeks.org/v3TXTyl5ZU
 
 //code
@@ -78,3 +82,6 @@ int main() {
 }
 
 
+// SAME CODE WITH LITLE BIT OF CHANGE IN POP FUNCTION
+
+// URL:	https://ide.geeksforgeeks.org/0XNay0Fq21
