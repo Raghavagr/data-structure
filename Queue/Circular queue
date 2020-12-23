@@ -1,0 +1,85 @@
+// Circular Queue Implimentation
+
+// URL: https://ide.geeksforgeeks.org/C7RN6HoGwA
+
+//code
+#include <stdio.h>
+#include <stdlib.h>
+
+struct circularQueue {
+    int r;
+    int f;
+    int size;
+    int *arr;
+};
+
+int isEmpty(struct circularQueue *q) {
+    if(q->r == q->f) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+
+int isFull(struct circularQueue *q) {
+    if((q->r +1)% q->size == q->f) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+
+int enqueue(struct circularQueue *q, int val) {
+    if(isFull(q)) {
+        printf("\nQueue Overflow!. can't insert");
+    }
+    else {
+        // we will do the circular increament anotherwise it will do 1 to 2 and 9 to 10
+        // now it will conver 9 to 0
+        q->r = (q->r+1)%q->size;
+        q->arr[q->r] = val;
+        printf("\nEnqueued element: %d",val);
+    }
+}
+
+int dequeue(struct circularQueue *q) {
+    int a=-1;
+    if(isEmpty(q)) {
+        printf("\nQueue is empty!.");
+    }
+    else {
+        q->f = (q->f+1)%q->size;    // circular increament
+        a = q->arr[q->f];
+    }
+    return a;
+}
+
+int main() {
+	struct circularQueue q;
+	q.size = 2;
+	q.r = q.f = 0;
+	q.arr = (int *)malloc(q.size * sizeof(int));
+	
+	// check if queue is empty
+	if(isEmpty(&q)) {
+	    printf("\nQueue empty");
+	}
+	
+	//enqueue few elements
+	enqueue(&q,7);
+	enqueue(&q,19);
+	
+	// check if queue is full
+	if(isFull(&q)) {
+	    printf("\nQueue Full");
+	}
+	
+	//deque few elements
+	printf("\ndequeuing element: %d", dequeue(&q));
+	
+	return 0;
+}
+
+
