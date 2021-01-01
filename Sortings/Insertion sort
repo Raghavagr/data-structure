@@ -12,6 +12,9 @@ Insertion is the sorting algorithm which works such as:
     - then insert 7 into 1st part. sor first compare 7 with 12, swap will be possible. then 7 will be compared with 9, again swap. 7 is at its pos
     - so on things go on.
     
+- Insertion Sort is Stable Algorithm -> means if 2 or more element are same then the order of element is maintained
+- Insertion sort is Adaptable.  -> means if array is sort then, thus it take the advantage of it. YES.
+    
 // IMPLIMENTATION
 
 // URL: https://ide.geeksforgeeks.org/dehI9eglEB
