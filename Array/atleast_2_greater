@@ -28,3 +28,5 @@ int main() {
 	findGreaterElement(arr,n);
 	return 0;
 }
+
+// URL-2) https://ide.geeksforgeeks.org/ruZ9eXEQ1q
