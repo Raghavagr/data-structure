@@ -22,3 +22,10 @@ int main() {
 	countOcuurence(arr,n,x);
 	return 0;
 }
+
+
+/*		ONE MORE SIMILAR PROGRAM 	*/
+
+// QUE) Write a C++ program to find the two repeating elements in a given array of integers.
+
+// URL:	https://ide.geeksforgeeks.org/hQQNZBSa23
