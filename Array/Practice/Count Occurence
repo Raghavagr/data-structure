@@ -1,0 +1,24 @@
+// Write a C++ program to count the number of occurrences of given number in a sorted array of integers.
+
+// URL: https://ide.geeksforgeeks.org/J6cr7s9gp3
+
+#include <iostream>
+using namespace std;
+
+int countOcuurence(int arr[], int n, int x) {
+    int count=0;
+    for(int i=0; i<n; i++) {
+        if(arr[i] == x) {
+            count++;
+        }
+    }
+    cout<<"no. of occurence of "<<x<<" is: "<<count;
+}
+
+int main() {
+	int arr[] = {3,7,3,12,9,7,3,12};
+	int n = sizeof(arr)/sizeof(arr[0]);
+	int x = 3;
+	countOcuurence(arr,n,x);
+	return 0;
+}
