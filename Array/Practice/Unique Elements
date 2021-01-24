@@ -1,0 +1,48 @@
+// QUE) Write a C++ program to find and print all unique elements of a given array of integers.
+
+/ URL:  https://ide.geeksforgeeks.org/KEtiBjQG7m
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int i=0,j=0,k=0;
+	int arr[] = {1, 5, 7, 5, 8, 9, 11, 11, 2, 5, 6};
+	int n = sizeof(arr)/sizeof(arr[0]);
+    int res=false;
+    cout<<"unique element: "<<endl;
+    // logic-1
+    /*
+    for(int i=0; i<n; i++) {
+        for(int j=i+1; j<n; j++) {
+            if(arr[i] == arr[j]) {
+                res=true;
+                break;
+            }
+        }
+        
+        if(res==false) {
+            cout<<arr[i]<<" ";
+        }
+        res=false;
+        
+    }
+    */
+    
+    //logic-2
+    for(int i=0; i<n; i++) {
+        int j;
+        for(j=0; j<i; j++) {
+            if(arr[i] == arr[j]) {
+                break;
+            }
+        }
+        if(i==j) {
+            cout<<arr[i]<<" ";
+        }
+    }
+	
+	return 0;
+}
+
+
