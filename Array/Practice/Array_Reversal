@@ -1,0 +1,33 @@
+// Print Array in reverse order
+
+// URL: https://ide.geeksforgeeks.org/lO66rhOyio
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int temp;
+	int arr[] = {1,2,3,4,5};
+	int n = sizeof(arr)/sizeof(arr[0]);
+    /*
+    for(int i=1; i<=n/2; i++) {
+        temp = arr[i-1];
+        arr[i-1] = arr[n-i];
+        arr[n-i] = temp;
+    }
+    */
+    
+    // or you can also run loop in this way
+    for(int i=0; i<n/2; i++) {
+        temp = arr[i];  
+        arr[i] = arr[n-1-i];
+        arr[n-1-i] = temp;
+    }
+    
+    for(int i=0; i<n; i++) {
+        cout<<arr[i]<<" ";
+    }
+    
+    // one is to print direct in reverse order but not good practice.
+	return 0;
+}
