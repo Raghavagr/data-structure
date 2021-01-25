@@ -1,0 +1,33 @@
+// Find K smallest and K greatest
+
+// URL: https://ide.geeksforgeeks.org/z1T86twNkG
+
+#include <iostream>
+#include<algorithm>
+using namespace std;
+
+int main() {
+	int arr[] = {7,3,9,5,13,10};
+	int n = sizeof(arr)/sizeof(arr[0]);
+    int k=2;
+    
+    //sort(arr, arr+n);    // ascending order
+    sort(arr, arr+n, greater<int>());// descending order
+    
+    cout<<"the k smallest element is: "<<arr[n-k]<<endl;
+    cout<<"the k greatest element is: "<<arr[k-1];
+    
+    /*
+    cout<<"the "<<k<<" largest element is: "<<endl;
+    for(int i=0; i<k; i++) {
+        cout<<arr[i]<<" ";
+    }
+    
+    cout<<"\nthe "<<k<<" smallest element is: "<<endl;    
+    for(int i=n-1; i>k; i--) {
+        cout<<arr[i]<<" ";
+    }
+    */
+    
+	return 0;
+}
