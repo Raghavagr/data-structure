@@ -1,0 +1,38 @@
+// FIND GREATEST AND 2ND MIN IN ARRAY
+
+// URL: https://ide.geeksforgeeks.org/yTJkm428mc
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int i=0,j=0,k=0;
+	int arr[] = {5, 3, 9, 4, 7, 15};
+	int n = sizeof(arr)/sizeof(arr[0]);
+    int max=0, min=arr[0], smin=arr[0], smax=0;
+    for(int i=0; i<n; i++) {
+        if(arr[i] > max) {
+            max = arr[i];
+        }
+        /*
+        if(arr[i] > smax && arr[i] < max) {
+            smax=arr[i];
+        }
+        */
+        
+        if(arr[i] < min) {
+            min = arr[i];
+        }
+        
+        if(arr[i] < smin && arr[i] > min) {
+            smin = arr[i];
+        }
+    }
+	
+	cout<<"max: "<<max<<endl;
+	cout<<"min: "<<min<<endl;
+	//cout<<"2nd max: "<<smax<<endl;
+	cout<<"2nd min: "<<smin<<endl;
+	return 0;
+}
+
