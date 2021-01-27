@@ -1,6 +1,7 @@
 // QUE) Write a C++ program to find the number of pairs of integers in a given array of integers whose sum is equal to a specified number.
 
 // URL: https://ide.geeksforgeeks.org/9p71OB6Tb3
+// URL-2: https://ide.geeksforgeeks.org/Fkvq13AUPR
 
 #include <iostream>
 using namespace std;
