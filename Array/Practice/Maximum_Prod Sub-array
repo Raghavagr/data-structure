@@ -1,0 +1,41 @@
+// Find the maximum product subarray in array of +ve and -ve elements
+
+// Concept is as similar as Max sum sub array, only litle bit difference it has.
+
+// URL: https://ide.geeksforgeeks.org/WSlmtD4CGL
+
+#include <iostream>
+using namespace std;
+
+int main() {
+	//int arr[] = {-1,-3,-10,0,60};
+	//int arr[] = {6, -3, -10, 0, 2};
+	int arr[] = {-2, -40, 0, -2, -3};
+	int n = sizeof(arr) / sizeof(arr[0]);
+	int max_prod, max_end=1;
+	int s=0,start,end;
+	max_prod = arr[0];
+	
+	// search for max_prod in array
+	for(int i=0; i<n; i++) {
+	    max_end = max_end * arr[i];
+	    if(max_prod < max_end) {
+	        max_prod = max_end;
+	        // take the start and end index
+	        start = s;
+	        end = i;
+	    }
+	    
+	    if(max_end == 0) {
+	        s = i;
+	        max_end = 1;
+	    }
+	}
+	cout<<"max subarray prod is: "<<max_prod<<endl;
+	cout<<"the subarray start and end index is: "<<start<<" & "<<end;
+	cout<<"\nthe subarray of prod found is: ";
+	for(int i=start; i<=end; i++) {
+	    cout<<arr[i]<<" ";
+	}
+	return 0;
+}
