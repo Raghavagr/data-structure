@@ -1,0 +1,57 @@
+// QUE) Find the minimum element in a sorted and rotated array
+
+METHOD-1) It is simple method as usual traverse and find the array min. Complexity is O(N)
+
+METHOD-2) We can do this with complexity of O(Log N) using Binary searcha and it's just interesting.
+  
+ - The minimum element is the only element whose previous is greater than it. If there is no previous element, then there is no rotation (the first element is minimum).
+     We check this condition for the middle element by comparing it with (mid-1)’th and (mid+1)’th elements.
+ - If the minimum element is not at the middle (neither mid nor mid + 1), then the minimum element lies in either the left half or right half. 
+ - If the middle element is smaller than the last element, then the minimum element lies in the left half
+ - Else minimum element lies in the right half.
+ 
+ // IMPLEMENTATION
+ 
+ // URL: https://ide.geeksforgeeks.org/hvYETZptGB
+ 
+ #include <iostream>
+using namespace std;
+
+int findMin(int arr[], int low, int high) {
+    int mid;
+    if(high < low) {
+        return arr[0];
+    }
+    if(high == low) {
+        arr[low];
+    }
+    
+    mid = (low + high)/2;
+    
+    // check if mid+1 id min element, cons case as {3,4,5,1,2}
+    if(mid < high && arr[mid] > arr[mid+1]) {
+        return arr[mid+1];
+    } 
+    
+    // check if mid itself is min element
+    if(mid > low && arr[mid] < arr[mid-1]) {
+        return arr[mid];
+    }
+    
+    // check in which half we have to go
+    if(arr[high] > arr[mid]) {
+        return findMin(arr, low, mid-1);
+    }
+    else {
+        return findMin(arr, mid+1, high);
+    }
+}
+
+int main() {
+	//int arr[] = {3,4,5,1,2};
+	int arr[] = {5, 6, 1, 2, 3, 4};
+	int n = sizeof(arr) / sizeof(arr[0]);
+    cout<<"Min element using bin search: "<<findMin(arr, 0, n-1);
+
+	return 0;
+}
