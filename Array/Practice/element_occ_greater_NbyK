@@ -1,0 +1,25 @@
+// Find the elemets whose occurence is greater then n/k times
+
+// URL: https://ide.geeksforgeeks.org/YOvybqLbUB
+
+#include <iostream>
+using namespace std;
+
+int main() {
+	int arr[] = {3, 1, 2, 2, 1, 2, 3, 3};
+	int n = sizeof(arr)/sizeof(arr[0]);
+	int k=4,count=1;
+	int s = n/k;
+	for(int i=0; i<n; i++) {
+	    for(int j=i+1; j<n; j++) {
+	        if(arr[i] == arr[j]) {
+	            count++;
+	        }
+	    }
+	    if(count > s) {
+	        cout<<arr[i]<<" ";
+	    }
+	    count=1;
+	}
+	return 0;
+}
