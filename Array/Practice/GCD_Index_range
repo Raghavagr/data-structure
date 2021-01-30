@@ -1,0 +1,30 @@
+// QUE) GCDs of given index ranges in an array
+
+// URL: https://ide.geeksforgeeks.org/3XeGcbNAgH
+
+#include <iostream>
+using namespace std;
+
+int GCD(int n1, int n2) {
+    int gcd;
+    for(int i=1; i<=n1 && i<=n2; i++) {
+        if(n1%i == 0 && n2%i == 0) {
+            gcd=i;
+        }
+    }
+    return gcd;
+}
+
+int main() {
+	int arr[] = {2, 3, 60, 90, 50};
+	int n = sizeof(arr)/sizeof(arr[0]);
+	int st,end;   //Index Ranges : {1, 3}, {2, 4}, {0, 2}
+	cout<<"enter the start and end index"<<endl;
+	cin>>st>>end;
+	int gcd=arr[st];
+	for(int i=st; i<=end; i++) {
+	    gcd = GCD(gcd, arr[i]);
+	}
+	cout<<"The required GCD is: "<<gcd;
+	return 0;
+}
