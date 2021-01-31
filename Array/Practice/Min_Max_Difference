@@ -1,0 +1,57 @@
+// QUE) Minimize the maximum difference between the heights
+
+Given heights of n towers and a value k. We need to either increase or decrease height of every tower by k (only once) where k > 0. 
+The task is to minimize the difference between the heights of the longest and the shortest tower after modifications, and output this difference.
+
+Input  : arr[] = {1, 15, 10}, k = 6
+Output :  Maximum difference is 5.
+
+// URL: https://ide.geeksforgeeks.org/mD6k5BY9fe
+
+#include <iostream>
+using namespace std;
+
+int main() {
+	//int arr[] = {1, 5, 15, 10};
+	//int arr[] = {6, 10};   //k=3         //{4, 6}, k=10;
+	int arr[] = {1, 15, 10};   //{1, 10, 14, 14, 14, 15};
+	int n=sizeof(arr)/sizeof(arr[0]);
+	int k;
+	cout<<"enter k"<<endl;
+	cin>>k;
+	for(int i=0; i<n; i++) {
+	    if(arr[i] < k) {
+	        arr[i] = arr[i] + k;
+	    }
+	    else if(arr[i] > 2*k) {
+	        arr[i] = arr[i] - k;
+	    }
+	    else if(arr[i] > k+(k/2)) {
+	        arr[i] = arr[i] - k;
+	    }
+	    else {
+	        arr[i] = arr[i] + k;
+	    }
+	}
+	
+	//find max diff
+	int max,min = arr[0];
+	for(int i=1; i<n; i++) {
+	    if(max<arr[i]) {
+	        max = arr[i];
+	    }
+	    if(min>arr[i]) {
+	        min = arr[i];
+	    }
+	}
+	
+	cout<<"max diff is: "<<max-min<<endl;
+	
+	// print the updated array
+	for(int i=0; i<n; i++) {
+	    cout<<arr[i]<<" ";
+	}
+	
+	return 0;
+}
+
