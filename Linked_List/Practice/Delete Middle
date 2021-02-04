@@ -1,0 +1,68 @@
+// Delete the Middle Node in Linked list
+
+// URL: https://ide.geeksforgeeks.org/FttMAX1T6v
+
+//code
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node *next;
+};
+
+struct Node *create(int item) {
+    struct Node *temp = (struct Node *)malloc(sizeof(struct Node));
+    temp->data = item;
+    temp->next = NULL;
+    return temp;
+}
+
+void Push(struct Node** head, int x) {
+    struct Node *store = create(x);
+    if(*head == NULL) {
+        *head = store;
+        return;
+    }
+    struct Node *temp = *head;
+    while(temp->next) {
+        temp = temp->next;
+    }
+    temp->next = store;
+}
+
+int deleteMiddle(struct Node** head) {
+    if((*head)->next == NULL) {
+        *head = NULL;
+        return -1;
+    }
+    struct Node *fast = (*head)->next;
+    struct Node *slow = *head;
+    
+    if(fast != NULL && fast->next != NULL) {
+        fast = fast->next->next;
+        slow = slow->next;
+    }
+    slow->next = slow->next->next;
+}
+
+void display(struct Node *head) {
+    struct Node *temp = head;
+    while(temp) {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    }
+}
+
+int main() {
+    struct Node *ptr = NULL;
+    Push(&ptr, 10);
+    Push(&ptr, 20);
+    Push(&ptr, 30);
+    Push(&ptr, 40);
+    Push(&ptr, 50);
+    //Push(&head, 60);
+    deleteMiddle(&ptr);
+    display(ptr);
+	return 0;
+}
