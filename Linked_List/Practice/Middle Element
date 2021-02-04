@@ -1,0 +1,50 @@
+// QUE) Print the Middle Element of Linked List
+
+// URL: https://ide.geeksforgeeks.org/y2sLbVCqmM
+
+//code
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node *next;
+};
+
+void printMiddle(struct Node *head) {
+    struct Node *fptr2 = head;
+    struct Node *sptr1 = head;
+    
+    if(head != NULL) {
+        //the only logic is to traverse the linked list with two pointers
+        //one at normal speed and other twice the speed of first
+        //when the fast pointer reaches to the end, slow pointer will be in 
+        //the middle of the linted list
+        while(fptr2 != NULL && fptr2->next != NULL) {
+            fptr2 = fptr2->next->next;
+            sptr1 = sptr1->next;
+        }
+        printf("Middle element is: %d", sptr1->data);
+    }
+}
+
+void Push(struct Node **head_ref, int item) {
+    struct Node *ptr = (struct Node *)malloc(sizeof(struct Node));
+    
+    ptr->data = item;
+    ptr->next = (*head_ref);
+    (*head_ref) = ptr;
+}
+
+
+int main() {
+    struct Node *head = NULL;
+    Push(&head, 10);
+    Push(&head, 20);
+    Push(&head, 30);
+    Push(&head, 40);
+    Push(&head, 50);
+    //Push(&head, 60);
+    printMiddle(head);
+	return 0;
+}
