@@ -1,0 +1,57 @@
+// Write a program in C to insert New value in the array (sorted list )..
+
+L0gic-1
+// URL: https://ide.geeksforgeeks.org/B1P3YCGsRo
+
+// Logic-2
+// URL: 
+
+#include <iostream>
+using namespace std;
+
+void insert(int arr[], int n, int item) {
+    for(int i=n-1; i>0; i--) {
+        if(arr[i]> item) {
+            arr[i+1] = arr[i];
+        }
+        if(arr[i] < item) {
+            arr[i+1] = item;
+        }
+    }
+    n++;
+}
+
+void insert2(int arr[], int n, int item) {
+    int p;
+    for(int i=0; i<n; i++) {
+        if(arr[i] > item) {
+            p = i;
+            break;
+        }
+    }
+}
+
+void display(int arr[], int n) {
+    for(int i=0; i<n; i++) {
+        cout<<arr[i]<<" ";
+    }
+}
+
+int main() {
+    int n, item;
+	int arr[100];
+	cout<<"enter no. of elements"<<endl;
+	cin>>n;
+	cout<<"enter elements in sorted order: "<<endl;
+	for(int i=0; i<n; i++) {
+	    cin>>arr[i];
+	}
+	cout<<"enter element you want to insert in sorted array"<<endl;
+	cin>>item;
+	cout<<"your original array is: "<<endl;
+	display(arr, n);
+	cout<<"\nafter insertion your array: "<<endl;
+	insert(arr, n, item);
+	display(arr, n+1);
+	return 0;
+}
