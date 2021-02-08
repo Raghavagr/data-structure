@@ -1,0 +1,28 @@
+// C program to reverse Linked List
+
+#include <stdio.h>
+
+vid reverse(struct node *head) {
+    struct node *current=NULL, *prev=NULL, *next_node=NULL;
+    if(head == NULL) {
+        printf("list empty\n");
+    }
+    if(head->next == NULL) {
+        printf("only one node!. already reversed\n");
+    }
+    prev = NULL;
+    current = head;
+    
+    while(current != NULL) {
+        next_node = current->next;
+        current->next = prev;   // address to prev, so we are reversing here
+        prev = current;
+        current = current->next;
+    }
+    head = prev;
+}
+
+int main() {
+	
+	return 0;
+}
