@@ -1,0 +1,15 @@
+// Search Element in Linked List
+
+-> It's a very simple single function program
+
+void Search(struct node *head, int item) {
+    struct node *ptr;
+    ptr = head;
+    while(ptr != NULL) {
+        if(ptr->data == item) {
+            printf("Success");
+            return 1;
+        }
+        ptr = ptr->next;
+    }
+}
