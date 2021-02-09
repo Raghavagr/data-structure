@@ -1,0 +1,14 @@
+// Concatenate 2 singly linked list
+
+simple function
+
+// concatenate 2 list.
+void concatenate(struct node *head1, struct node *head2) {
+    struct node *ptr = NULL;
+    ptr = head1;
+    
+    while(ptr->next != NULL) {
+        ptr = ptr->next;
+    }
+     ptr->next = head2;
+}
