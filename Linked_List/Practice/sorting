@@ -1,0 +1,24 @@
+// Sort a singly linked list
+
+It works similar as we sort arrays, using 2 for loop
+- First element will be compared by every other element, and in 1st iteration we will get the smallest element of list.
+- and so on it goes untell we reaches at last Node.
+
+void sorting() {
+    struct Node *ptr, *cpt;
+    int temp;
+    ptr = head;
+    while(ptr->next != NULL) {
+        cpt = ptr->next;
+        while(cpt != NULL) {
+            if(ptr->data > cpt->data) {
+                temp = ptr->data;
+                ptr->data = cpt->data;
+                cpt->data = temp;
+            }
+            cpt = cpt->next;
+        }
+        ptr = ptr->next;
+    }
+}
+
