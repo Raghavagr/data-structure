@@ -1,6 +1,13 @@
 // QUE) Print the Middle Element of Linked List
 
 // URL: https://ide.geeksforgeeks.org/y2sLbVCqmM
+// URL2 OF SAME PROGRAM:	https://ide.geeksforgeeks.org/CysxUgXTRC
+
+// If we have the odd number of nodes, eg-5 then it will give the correct middle element as 3.
+But when We have the even number of nodes, then it will print the next even as in 6 nodes it will print the 4th node 
+ - because there is no specfic middle in even.
+
+// If you want that it should print the one early the, one slight change is there, shown at end of program.
 
 //code
 #include <stdio.h>
@@ -48,3 +55,14 @@ int main() {
     printMiddle(head);
 	return 0;
 }
+
+
+// If you want that in even number of nodes, it should print one node before then, slight one change you have to do in above program
+
+// start slow ptr as head
+// start fast ptr from head->next
+
+slowptr = head;
+fastptr = head->next;
+
+// remaining prog is as it is...
