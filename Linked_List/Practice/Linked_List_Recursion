@@ -1,0 +1,19 @@
+// 1) How to print Linked List using recursion
+
+// This is a simple func by which we can print a singly linked list using recursion.
+void func(struct Node *ptr) {
+    if(ptr) { // if(ptr!=NULL) 
+        printf("%d ", ptr->data);
+        func(ptr->next);
+    }
+}
+
+// 2) How to print Linked List using recursion in reverse order
+-> only a slight change is there in above function in function calling
+void reverse(struct Node *ptr) {
+    if(ptr) {
+        reverse(ptr->next);
+        printf("%d ", ptr->data);
+    }
+}
+
