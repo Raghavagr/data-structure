@@ -1,5 +1,13 @@
 // find the nearest element towards right which is greater then the current element using stack.
 
+// Eg:- 1 | 2 | 3 | 4 |  
+ we will se the right subarray of each element from back:
+ 1) 4 has nothing on right so, ans will -1
+ 2) 3 has 1 element as 4 on right which is greater to it so 4 will be answer
+ 3) 2 has 3 as nearest greater to right.
+ 4) 1 has 2 as nearest greater 
+
+
 // URL: https://ide.geeksforgeeks.org/GPscLYez4b
 
 // Nearest Greater to Right
