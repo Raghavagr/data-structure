@@ -1,0 +1,23 @@
+suppose the array is 1 | 3 | 2 | 4
+
+Now, in this problem we will traverse the array from begining itself because we have to see the left element of the current element which we will push ino stack
+so,
+1) first we will se 1, stack is empty then push -1 to vector, after complete iteration of i=0, push 1 to stack and increase i.
+    stack = 1 , vector = -1
+    
+2) Now, we are at 3, we have 1 in stack and it is its left, but 1 is not greater to 3, then push -1 to vector and push 3 into stack.
+    stack= 1, 3,  vector = -1, -1
+    
+3) we are at 2, we have 1 and 3 into stack. 3 is greater then 2, push 3 to vector and 2 to stack
+    stack = 1,3,2  vector = -1, -1, 3
+    
+4) we are at 4, stack has 1,3,2 as left. none of element is greater then 4 then push -1 to vector
+    stack = 1,3,2,4  vector = -1, -1, 3, -1
+
+Finally print the vector as it is and this is our required answer.
+
+brute force of the problem: 
+for(int i=0; i<n; i++) {
+  for(int j=i-1; j>=0; j--) {
+ }
+}
