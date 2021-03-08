@@ -7,6 +7,7 @@
  3) 2 has 3 as nearest greater to right.
  4) 1 has 2 as nearest greater 
 
+so the vector will form with elements as -1, 4, 3, 2 and we will print the reverse vector as the answer for each element greater to right.
 
 // URL: https://ide.geeksforgeeks.org/GPscLYez4b
 
