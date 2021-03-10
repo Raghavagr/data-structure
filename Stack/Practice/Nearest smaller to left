@@ -1,0 +1,68 @@
+// Find nearest smaller to left
+
+--> After applying Brute Force if j loop depends on i then, try to apply the stack..
+let's start
+
+suppose the array is  4 | 5 | 2 | 10 | 8
+   1) Start traversing from left, because we are seeing less element
+   2) there is no need to reverse the vector for printing the ans
+   
+ first i is at 4, so no element is at left
+    push 4 to stack and -1 to vector == stack = 4, vector = -1
+ 
+ Second, i at 5, j from 4
+    push 5 to stack and 4 is small to 5 so push 4 to vector   stack = 4, 5,   vector = -1, 4
+    
+Same as it is, third  stack == 4, 5, 2,     vector = -1, 4, -1
+
+Fourth    stack = 4,5,2,10    vector = -1, 4, -1, 2
+
+Fifth   stack = 4,5,2,10,8    vector = -1,4,-1,2,2
+
+ANSWER = -1, 4, -1, 2, 2
+
+BRUTE FORCE:
+
+  for(int i=0; i<n; i++) {
+    for(int j=i-1; j>=0; j--) {
+    }
+   }
+   
+//  IMPLEMENTATION
+
+#include <iostream>
+using namespace std;
+
+int left_smaller(int arr[], int n) {
+    vector<int> v;
+    stack<int> s;
+    
+    for(int i=0; i<n; i++) {
+        if(s.size() == 0) {
+            v.push_back(-1);
+        }
+        
+        else if(s.size() > 0 && s.top() < arr[i]) {
+            v.push_back(s.top());
+        }
+        
+        else if(s.size() > 0 && s.top() >= arr[i]) {
+            while(s.size() > 0 && s.top() >= arr[i]) {
+                s.pop();
+            }
+            if(s.size() == 0) {
+                v.push_back(-1);
+            }
+            else {
+                v.push_back(s.top());
+            }
+        }
+        s.push_back(arr[i]);
+    }
+    // print vector as it is, DO NOT REVERSE.
+}
+
+int main() {
+	
+	return 0;
+}
