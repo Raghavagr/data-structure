@@ -1,0 +1,34 @@
+Stock Span Problem :- Find the count of consecutive smaller to left.
+
+    so, where we will get the greater element in the left, we wil stop and subtract the index of greater element from the index of element from where we start
+    
+EXAMPLE: Suppose we have below array
+          100 | 80 | 60 | 70 | 60 | 75 | 85
+Index=     0    1     2    3    4    5    6
+     
+ Now, we have to find from 75, how many consecutive smaller to left are present so.
+ 
+ what we will do is
+  start iteration from left to right.
+  In stack we will maintain a pair of element with its index.
+  and No need to print the vector in reverse order.
+
+so , let's start we will store the index of the the greater element from left as we got
+ 0     1   2   3   4   5   6
+100   80  60  70  60  75  85
+
+-1,   0   1   1   3   1   0
+
+Now, we want the array so, what we do is subtract this vector element from respective index
+
+1    1    1    1   1   4   6
+
+Now, we are asked with 75 so, at 75th index means at 5th position 4 is there so output will be 4 and it is Correct.
+
+
+Now, let's Implement it with code
+// IMPLEMENTATION
+
+
+
+ 
