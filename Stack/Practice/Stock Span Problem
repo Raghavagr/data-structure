@@ -29,6 +29,54 @@ Now, we are asked with 75 so, at 75th index means at 5th position 4 is there so 
 Now, let's Implement it with code
 // IMPLEMENTATION
 
+// URL: https://ide.geeksforgeeks.org/lnR6dHv1FL
 
+#include <iostream>
+using namespace std;
+
+int NGL_index(int arr[], int n) {
+    vector<int> v;
+    stack<pair<int, int>> s;
+    for(int i=0; i<n; i++) {
+        if(s.size() == 0) {
+            v.push_back(-1);
+        }
+        else if(s.size() > 0 && s.top().first > arr[i]) {
+            v.push_back(s.top().second);   // push index to vector. 
+        }
+        
+        else if(s.size() > 0 && s.top().first <= arr[i]) {
+            while(s.size() > 0 && s.top().first <= arr[i]) {
+                s.pop();
+            }
+            if(s.size() == 0) {
+                v.push_back(-1);
+            }
+            else {
+                v.push_back(s.top().second);
+            }
+        }
+        s.push({arr[i], i});
+    }
+    // here we got a vector with NGL indexes
+    // NGL INDEX, we will get the ngl nereast greater index
+    
+    // now we have t subtract ngl index from respective array index.
+	for(int i=0; i<v.size(); i++) {
+	    v[i] = i-v[i];
+	}
+	return v;
+}
+
+
+int main() {
+	int arr[] = {};
+	int n = sizeof(arr) / sizeof(arr[0]);
+	vector<int> v;
+	v = NGL_index(arr, n);
+	
+	// return vector.
+	return 0;
+}
 
  
