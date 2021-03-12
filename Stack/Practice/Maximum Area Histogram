@@ -1,0 +1,31 @@
+Maximum Area Histogram Problem:
+Problem Statement:  You are given a array, which is basically known as heights of building. width is same. 
+              Now you have to determine the maximum area of this histogram of this building that can be spread in left and right.
+              
+DESCRIPTION:  So suppose we have array as 6 | 2| 5 | 4 | 5 | 1 | 6
+
+    Now, where where I can spread this in left and right, 
+    1) from 2, i can spread this histogram from 6 to 5. then we get 1 so we cannot move ahead,
+          so, AREA = 2 * 5 = 10
+    2) from 1, I can spead to all the array,
+          so, AREA = 1 * 7 = 7
+    3) From 4 I can spread to left and right 5.
+          so, AREA = 4 * 3 = 12
+          
+ SO, maximum area of the histogram is 12.
+ 
+ // APPROACH TO SOLVE THE PROBLEM
+ Wherever we get the small number to the current histogram we stop, means till greater element are there we have ko keep spreading the width.
+ means we will USE NSL AND NSR Logic to find the nearest smaller to left and nearest greater to right, and as we get this we STOP and calculate the area.
+ 
+    we will require 2 vector: one is left and one is fpr right.
+    we will require STACK, where we will push the array element with index
+    
+    for left vector it is as it is, and for right vector first do it reverse, then find the width
+    - for finding the width we requite width array
+    - one we will requore to store the area
+    - now find the maximum element from area array.
+    
+Now let's move on to the implementation part
+
+ 
