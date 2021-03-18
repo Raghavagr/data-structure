@@ -1,0 +1,68 @@
+// QUE) Merge an array of size n into another array of size m+n
+
+There are two sorted arrays. First one is of size m+n containing only m elements. Another one is of size n and contains n elements. Merge these two arrays into the first array of size m+n such that the output is sorted. 
+Input: array with m+n elements (mPlusN[]). 
+
+// URL: https://ide.geeksforgeeks.org/prkADBRfkw
+
+#include <iostream>
+using namespace std;
+
+#define NA-1
+
+void moveToEnd(int mPlusN[], int size) {
+    int j = size-1;
+    for(int i=size-1; i>=0; i--) {
+        if(mPlusN[i] != NA) {
+            mPlusN[j] = mPlusN[i];
+            j--;
+        }
+    }
+}
+
+int merge(int mPlusN[], int N[], int m, int n) {
+    int i=n; // current index of mPlusN[]
+    int j=0; // current index of N[]
+    int k=0; // current index of output mPlusN[]
+    
+    while(k < (m+n)) {
+        /*a) in mPlusN[] m elements are at end,
+          so we are checkening that m[i] element is less the N[j],
+          then in mPlusN[k] pos push them
+        */
+        if((j == n) || (i < (m+n)) && mPlusN[i] <= N[j]) {
+            mPlusN[k] = mPlusN[i];
+            k++;
+            i++;
+        }
+        else {
+            mPlusN[k] = N[j];
+            j++;
+            k++;
+        }
+    }
+}
+
+void printArray(int arr[], int size) {
+    for(int i=0; i<size; i++) {
+        cout<<arr[i]<<" ";
+    }
+}
+
+int main() {
+	int mPlusN[] = {2, 8, NA, NA, NA, 13, NA, 15, 20};
+	int N[] = {5, 7, 9, 25};
+	int n = sizeof(N)/sizeof(N[0]);
+	int m = sizeof(mPlusN)/sizeof(mPlusN[0]) - n;
+	
+	cout<<"original array: "<<endl;
+	printArray(mPlusN, m+n);
+    // move m elememts to end
+    moveToEnd(mPlusN, m+n);
+    // merge n arr in mPlusN
+    merge(mPlusN, N, m, n);
+    
+	cout<<"\n merged array: "<<endl;
+	printArray(mPlusN, m+n);
+	return 0;
+}
