@@ -1,0 +1,67 @@
+// QUE) FIND Median of two sorted arrays of same size
+
+// URL: https://ide.geeksforgeeks.org/pVvyeNAFHG
+
+// CODE:
+#include <iostream>
+using namespace std;
+
+int findMedian(int arr1[], int arr2[], int n, int m) {
+    int temp[m+n];
+    int i=0; // index of temp 
+    int j=0; // index of arr1
+    int k=0; // index of arr2
+    while(i < n) {
+        if(arr1[j] < arr2[k]) {
+            temp[i] = arr1[j];
+            i++;
+            j++;
+        }
+        else {
+            temp[i] = arr2[k];
+            i++;
+            k++;
+        }
+    }
+    // push remaining element of arr1[j] 
+    while(j<=n && k<=m) {
+        if(arr1[j] < arr2[k]) {
+            temp[i] = arr1[j];
+            i++;
+            j++;
+        }
+        else {
+            temp[i] = arr2[k];
+            k++;
+            i++;
+        }
+    }
+
+    // print combine array
+    cout<<"Combine array: "<<endl;
+    int size=m+n;
+    cout<<"size: "<<size<<endl;
+    int mid = size/2;
+    for(int c=0; c<size; c++) {
+        cout<<temp[c]<<" ";
+    }
+    
+    cout<<"\nmedian: "<<endl;
+    if(size % 2 == 0) {
+        cout<<(temp[mid-1] + temp[mid])/2;
+    }
+    else {
+        cout<<temp[mid];
+    }
+}
+
+
+int main() {
+	int arr1[] = {1, 12, 15, 26, 38};
+	int arr2[] = {2, 13, 17, 30, 45};
+	int n = sizeof(arr1)/sizeof(arr1[0]);
+	int m = sizeof(arr2)/sizeof(arr2[0]);
+
+	findMedian(arr1, arr2, n, m);
+	return 0;
+}
