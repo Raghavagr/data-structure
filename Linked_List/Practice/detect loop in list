@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+
+struct node *check(struct node *head) {
+    struct node *p, *q;
+    p = q = head;
+    while((p!= NULL) && (q!=NULL) && (q->next) != NULL) {
+        p = p->next;
+        q = q->next->next;
+        if(p==q) {
+            return p;
+        }
+    }
+    return -1;
+}
+
+int main() {
+	cout<<"GfG!";
+	return 0;
+}
