@@ -1,0 +1,29 @@
+C/C++ Program for Two elements whose sum is closest to zero
+
+// URL: https://ide.geeksforgeeks.org/wQ3RKpa3nt
+
+#include <iostream>
+using namespace std;
+
+int min_sum(int arr[], int n) {
+    int min_sum, sum, l, r;
+    min_sum = arr[0] + arr[1];
+    for(int i=0; i<n; i++) {
+        for(int j=i+1; j<n; j++) {
+            sum = arr[i] + arr[j];
+            if(abs(min_sum) > abs(sum)) {
+                min_sum = sum;
+                l = i;
+                r = j;
+            }
+        }
+    }
+    cout<<"two elements whose sum is min: "<<arr[l]<<" & "<<arr[r];
+}
+
+int main() {
+	int arr[] = {1, 60, -10, 70, -80, 85};
+	int n = sizeof(arr) / sizeof(arr[0]);
+	min_sum(arr, n);
+	return 0;
+}
