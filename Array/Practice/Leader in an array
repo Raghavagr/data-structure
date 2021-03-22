@@ -64,3 +64,5 @@ int printLeaders(int arr[],int n)
     }
 }
 
+// Combine program of both methods
+// URL:	https://ide.geeksforgeeks.org/jGEE6fDx5a
