@@ -1,0 +1,96 @@
+// QUE) Given an unsorted array arr[] of size N, rotate it by D elements (clockwise). 
+
+// METHOD-1
+  1) Store the first d elements
+  2) Shift rest of elements after d from start
+  3) place back the d elemets
+  
+IMPLEMENTATION
+
+// URL: https://ide.geeksforgeeks.org/DOQsNMfIk9
+
+//CODE:
+#include<iostream>
+using namespace std;
+int main()
+ {
+	//code
+	int t, n, d;
+	int arr[100], temp[100];
+	cin>>t;
+	while(t>0) {
+	    cin>>n>>d;
+	    for(int i=0; i<n; i++) {
+	        cin>>arr[i];
+	    }
+	    //store the first d elements
+	    for(int i=0; i<d; i++) {
+	        temp[i] = arr[i]; 
+	    }
+	    //shifting remaining elements from start
+	    int x=0;
+	    for(int j=d; j<n; j++) {
+	        arr[x] = arr[j];
+	        x++;
+	    }
+	    //keep the first d elementd at back
+	    x=0;
+	    for(int i=n-d; i<n; i++) {
+	        arr[i] = temp[x];
+	        x++;
+	    }
+	    
+	    //print the array
+	    for(int i=0; i<n; i++) {
+	        cout<<arr[i]<<" ";
+	    }
+	    cout<<endl;
+	    t = t-1;
+	}
+	return 0;
+}
+
+// METHOD-2 (Short AND Effective)
+To rotate by one, store arr[0] in a temporary variable temp, move arr[1] to arr[0], arr[2] to arr[1] …and finally temp to arr[n-1]
+Let us take the same example arr[] = [1, 2, 3, 4, 5, 6, 7], d = 2 
+Rotate arr[] by one 2 times 
+We get [2, 3, 4, 5, 6, 7, 1] after first rotation and [ 3, 4, 5, 6, 7, 1, 2] after second rotation.
+
+IMPLEMENTATION
+// URL: https://ide.geeksforgeeks.org/gOe1Vt1niT
+#include<iostream>
+using namespace std;
+
+int leftRotateByOne(int arr[], int n) {
+    int temp=arr[0];
+    for(int i=0; i<n; i++) {
+        arr[i] = arr[i+1];
+    }
+    arr[n-1] = temp;
+}
+
+int main()
+ {
+	//code
+	int t, n, d;
+	int arr[100], temp[100];
+	cin>>t;
+	while(t>0) {
+	    cin>>n>>d;
+	    for(int i=0; i<n; i++) {
+	        cin>>arr[i];
+	    }
+	    
+	    for(int i=0; i<d; i++) {
+	        leftRotateByOne(arr, n);
+	    }
+	    
+	    //print the array
+	    for(int i=0; i<n; i++) {
+	        cout<<arr[i]<<" ";
+	    }
+	    cout<<endl;
+	    t = t-1;
+	}
+	return 0;
+}
