@@ -1,0 +1,93 @@
+// QUE) Segregate 0s and 1s in an array
+
+METHOD-1) Count the number of 0 and 1 present in array, ad simply update the array. You can use switch as well simply if/else
+
+// URL: https://ide.geeksforgeeks.org/GwIlxrjBJY
+
+// code:
+#include <iostream>
+using namespace std;
+
+int main() {
+	int arr[] = {0, 1, 0, 1, 0, 0, 1, 1, 1, 0};
+	int n = sizeof(arr) / sizeof(arr[0]);
+	cout<<"before segregating"<<endl;
+	for(int i=0; i<n; i++) {
+	    cout<<arr[i]<<" ";
+	}
+	int cnt0=0, cnt1=0;
+	for(int i=0; i<n; i++) {
+	    if(arr[i] == 0) {
+	        cnt0++;
+	    }
+	    if(arr[i] == 1) {
+	        cnt1++;
+	    }
+	}
+	int c=0;
+	while(cnt0 > 0) {
+	    arr[c++] = 0;
+	    cnt0--;
+	}
+	while(cnt1 > 0) {
+	    arr[c++] = 1;
+	    cnt1--;
+	}
+	
+	// print array 
+	cout<<"\naftre segregating"<<endl;
+	for(int i=0; i<n; i++) {
+	    cout<<arr[i]<<" ";
+	}
+	return 0;
+}
+
+// 
+Method 2 (Use two indexes to traverse) 
+Maintain two indexes. Initialize first index left as 0 and second index right as n-1.
+Do following while left < right 
+a) Keep incrementing index left while there are 0s at it 
+b) Keep decrementing index right while there are 1s at it 
+c) If left < right then exchange arr[left] and arr[right]
+
+Implementation: 
+
+// URL:-  https://ide.geeksforgeeks.org/WbiaztMwy7
+
+// code
+#include <iostream>
+using namespace std;
+
+int main() {
+	int arr[] = {0, 1, 0, 1, 0, 0, 1, 1, 1, 0};
+	int n = sizeof(arr) / sizeof(arr[0]);
+	cout<<"before segregating"<<endl;
+	
+	for(int i=0; i<n; i++) {
+	    cout<<arr[i]<<" ";
+	}
+	
+	int left=0, right=n-1;
+	while(left < right) {
+	    while(arr[left] == 0 && left < right) {
+	        left++;
+	    }
+	    while(arr[right] == 1 && left < right) {
+	        right--;
+	    }
+	    
+	    if(left < right) {
+	        arr[left] = 0;
+	        arr[right] = 1;
+	        left++;
+	        right--;
+	    }
+	}
+	
+	// print array 
+	cout<<"\naftre segregating"<<endl;
+	for(int i=0; i<n; i++) {
+	    cout<<arr[i]<<" ";
+	}
+	return 0;
+}
