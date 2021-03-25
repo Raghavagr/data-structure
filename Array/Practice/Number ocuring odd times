@@ -1,0 +1,54 @@
+// QUE)
+
+//  METHOD -- 1  (USE SIMPLE BRUTE FORCE APPROACH)
+
+we simply apply 2 loops and get count of each element and check odd and return val. Time comp is O(n^2)
+
+IMPLEMENTATION
+
+URL:  https://ide.geeksforgeeks.org/G3Rm7ABq5g
+
+// METHOD -- 2 (USE HASHING)
+
+ - A Better Solution is to use Hashing. Use array elements as key and their counts as value. 
+ - Create an empty hash table. One by one traverse the given array elements and store counts. 
+-- Time complexity of this solution is O(n). 
+-- But it requires extra space for hashing.
+
+IMPLEMENTATION: 
+
+// URL:  https://ide.geeksforgeeks.org/eRV5LumIOf
+
+// CODE:
+#include <iostream>
+#include <map>
+#include<unordered_map>
+
+using namespace std;
+
+int getOddOccurence(int arr[], int n) {
+    // define hashMap
+    unordered_map<int, int> hash;
+    
+    //put all elements to hashMap
+    for(int i=0; i<n; i++) {
+        hash[arr[i]]++;
+    }
+    
+    //iterate through hashMap to check an element
+    // occuring odd times and return it 
+    for(auto i: hash) {
+        if(i.second % 2 != 0) {
+            return i.first;
+        }
+    }
+    return -1;
+}
+
+int main() {
+	int arr[] = { 2, 3, 5, 4, 5, 2, 4, 3, 5, 2, 4, 4, 2 };
+	int n = sizeof(arr)/sizeof(arr[0]);
+	
+	cout<<getOddOccurence(arr, n);
+	return 0;
+}
