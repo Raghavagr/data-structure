@@ -1,0 +1,37 @@
+// QUE) Replace every element with the greatest element on right side
+
+// IMPLEMENTATION:
+
+// URL: https://ide.geeksforgeeks.org/Jhmd1eTyL3
+
+#include <iostream>
+using namespace std;
+
+void nextGreater(int arr[], int n) {
+    int max_right = arr[n-1];
+    arr[n-1] = -1;
+    
+    for(int i=n-2; i>=0; i--) {
+        int temp = arr[i];
+        
+        arr[i] = max_right;
+        
+        if(max_right < temp) {
+            max_right = temp;
+        }
+    }
+}
+
+void printArray(int arr[], int n) {
+    for(int i=0; i<n; i++) {
+        cout<<arr[i]<<" ";
+    }
+}
+
+int main() {
+    int arr[] = {16, 17, 4, 3, 5, 2};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    nextGreater(arr, n);
+    printArray(arr, n);
+	return 0;
+}
