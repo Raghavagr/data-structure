@@ -1,0 +1,72 @@
+que) Pythagorean Triplet in an array
+  such that a^2 + b^2 = c^2
+  
+  SAMPLE INPUT
+  arr[] = {3,1,4,6,5}
+  
+  output
+  True
+  
+  3^2 + 4^2 = 5^2
+
+// METHOD-1 (NAIVE APPROACH)   TIME COMPLEXITY-> O(N^3)
+ simple approach to run 3 loops
+ 
+ // URL:  https://ide.geeksforgeeks.org/D0AboJyj2H
+ 
+ // METHOD-2 (USE SORTING)    TIME COMPLEXITY -> O(N^2)
+  - Fix a as last element of sorted array
+  - Now search for pair (b,c) in subarray between first element and a. A pair (b,c) with given sum can be found O(N) time.
+  - If no pair found for current 'a', then move a one position back and repeat step 3.b
+
+// URL: https://ide.geeksforgeeks.org/qeLADoqxHl
+
+//CODE:
+
+#include <iostream>
+#include<algorithm>
+using namespace std;
+
+// function modifies the given array
+bool PythagoreanTriplet(int arr[], int n) {
+    // square array elements
+    for(int i=0; i<n; i++) {
+        arr[i] = arr[i] * arr[i];
+    }
+    
+    //sort array elements
+    sort(arr, arr+n);  //ascending order
+    
+    //now fix one element one by one and find out the other two element
+    for(int i=n-1; i>=2; i--) {
+        // to find other 2 element, start two index
+        // variable wil start from 2 diferent corner and bring them towards each-other
+        int l=0;
+        int r = i-1;
+        while(l < r) {
+            // triplet found
+            if(arr[l] + arr[r] == arr[i]) {
+                return true;
+            }
+            
+            // else either move l or r
+            (arr[l] + arr[r] < arr[i]) ? l++ : r--;
+        }
+    }
+    return false;
+}
+
+void printArray(int arr[], int n) {
+    for(int i=0; i<n; i++) {
+        cout<<arr[i]<<" ";
+    }
+}
+
+int main() {
+    int arr[] = {3,1,4,6,5};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    //printArray(arr, n);
+    //cout<<endl;
+    cout<<PythagoreanTriplet(arr, n);
+	return 0;
+}
