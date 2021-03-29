@@ -1,0 +1,134 @@
+      Implement two stacks in an array
+      
+Create a data structure twoStacks that represents two stacks. Implementation of twoStacks should use only one array, 
+      i.e., both stacks should use the same array for storing elements. Following functions must be supported by twoStacks.
+      
+push1(int x) –> pushes x to first stack 
+push2(int x) –> pushes x to second stack
+pop1() –> pops an element from first stack and return the popped element 
+pop2() –> pops an element from second stack and return the popped element
+Implementation of twoStack should be space efficient.
+    
+// METHOD - 1 (Divide the space in two halves) 
+
+A simple way to implement two stacks is to divide the array in two halves and assign the half half space to two stacks,
+      i.e., use arr[0] to arr[n/2] for stack1, and arr[(n/2) + 1] to arr[n-1] for stack2 where arr[] is the array to be used to implement two stacks 
+      and size of array be n. 
+The problem with this method is inefficient use of array space. A stack push operation may result in stack overflow even if there is space available in arr[].
+
+  For example, say the array size is 6 and we push 3 elements to stack1 and do not push anything to second stack2.
+  When we push 4th element to stack1, there will be overflow even if we have space for 3 more elements in array.
+
+IMPLEMENTATION URL: https://ide.geeksforgeeks.org/ZccPA0q5lU
+
+Complexity Analysis: 
+ 
+
+Time Complexity: 
+Push operation : O(1)
+Pop operation : O(1)
+Auxiliary Space: O(N). 
+Use of array to implement stack so. It is not the space-optimised method as explained above. 
+
+
+// METHOD - 2 (A space efficient implementation) 
+
+ - This method efficiently utilizes the available space. 
+ - It doesn’t cause an overflow if there is space available in arr[]. 
+ - The idea is to start two stacks from two extreme corners of arr[]. 
+ - stack1 starts from the leftmost element, the first element in stack1 is pushed at index 0. The stack2 starts from the rightmost corner, the first element in stack2 is pushed at index (n-1). 
+ - Both stacks grow (or shrink) in opposite direction. 
+ - To check for overflow, all we need to check is for space between top elements of both stacks. 
+ 
+ 
+Implementation URL: https://ide.geeksforgeeks.org/jYBlQiJxKb
+
+
+ // Complexity Analysis: 
+ 
+Time Complexity: 
+Push operation : O(1)
+Pop operation : O(1)
+Auxiliary Space :O(N).
+
+Use of array to implement stack so it is a space-optimised method. 
+
+
+// CODE:
+#include <iostream>
+using namespace std;
+
+class twoStacks {
+    int *arr;
+    int size;
+    int top1, top2;
+    
+    public:
+        //constructor
+        twoStacks(int n) {
+            size = n;
+            arr = new int[n];
+            top1 = -1;  // initially top at -1 
+            top2 = size;  // not size-1
+        }
+        
+        // method to push in stack1
+        void push1(int x) {
+            if(top1 < top2-1) {
+                top1 = top1 + 1;
+                arr[top1] = x;
+                cout<<"push "<<x<<" in stack1 success"<<endl;
+            }
+            else {
+                cout<<"Stack1 Overflow"<<endl;
+            }
+        }
+        
+        //method to push in Stack2
+        void push2(int x) {
+            if(top1 < top2 - 1) {  // same condition
+                top2 = top2 - 1;
+                arr[top2] = x;
+                cout<<"push "<<x<<" in stack2 success"<<endl;
+            }
+            else {
+                cout<<"Stack2 Overflow"<<endl;
+            }
+        }
+        
+        // method to pop in stack1
+        int pop1() {
+            if(top1 > 0) {
+                int x = arr[top1];
+                top1--;
+                return x;
+            }
+            else {
+                cout<<"stack1 underflow"<<endl;
+            }
+        }
+        
+        // method to pop in Stack2
+        int pop2() {
+            if(top2 < size) {
+                int x = arr[top2];
+                top2++;
+                return x;
+            }
+            else {
+                cout<<"Stack2 underflow"<<endl;
+            }
+        }
+};
+
+
+int main() {
+	twoStacks ts(5);
+	ts.push1(2);
+	ts.push1(7);
+	ts.push2(11);
+	ts.push2(15);
+	cout<<"Popped from stack1: "<<ts.pop1()<<endl;
+	cout<<"Popped from Stack2: "<<ts.pop2()<<endl;
+	return 0;
+}
