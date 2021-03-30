@@ -1,0 +1,44 @@
+//  Move all zeroes to end of array
+
+Given an array of random numbers, Push all the zero’s of a given array to the end of the array.
+For example, if the given arrays is {1, 9, 8, 4, 0, 0, 2, 7, 0, 6, 0}, it should be changed to {1, 9, 8, 4, 2, 7, 6, 0, 0, 0, 0}. 
+The order of all other elements should be same. Expected time complexity is O(n) and extra space is O(1).
+
+IMPLEMENTATION 
+
+// URL: https://ide.geeksforgeeks.org/1nQNhUOE2o
+
+// CODE:
+#include <iostream>
+using namespace std;
+
+int shiftZero(int arr[], int n) {
+    int count = 0; // count of non-zero elements
+    
+    // traverse the array. if we found any non-zero element
+    // then we replace that digit to this count
+    for(int i=0; i<n; i++) {
+        if(arr[i] != 0) {
+            arr[count++] = arr[i];  // increase count
+        }
+    }
+    
+    //Now, all the non-zero elements have been shifted to front-end.
+    // count is set of index at first 0
+    // now make lal elements 0 from count to end 
+    while(count < n) {
+        arr[count++] = 0;
+    }
+}
+
+    
+int main() {
+	int arr[] = {1,9,8,4,0,0,2,7,0,9,0,6};
+	int n = sizeof(arr)/sizeof(arr[0]);
+	shiftZero(arr, n);
+	cout<<"Array after shifting 0"<<endl;
+	for(int i=0; i<n; i++) {
+	    cout<<arr[i]<<" ";
+	}
+	return 0;
+}
