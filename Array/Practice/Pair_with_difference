@@ -1,0 +1,10 @@
+// Find a pair with the given difference
+
+// METHOD-1 (SIMPLE APPROACH)  -> COMLEXITY -> O(n^2)
+  simple run 2 loops(Brute Force)
+  
+// URL: https://ide.geeksforgeeks.org/doog74Z0UJ
+
+// METHOD - 2(Use Sorting)  EFFECTIVE APPROACH
+
+// URL: https://ide.geeksforgeeks.org/HdMKEGIySh
