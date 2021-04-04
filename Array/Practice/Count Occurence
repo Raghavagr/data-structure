@@ -29,3 +29,80 @@ int main() {
 // QUE) Write a C++ program to find the two repeating elements in a given array of integers.
 
 // URL:	https://ide.geeksforgeeks.org/hQQNZBSa23
+
+
+/// EFEECTIVE SOLUTION ( USE BINARY SEARCH)
+
+COMPLEXIY = O(log n)
+
+// URL:	https://ide.geeksforgeeks.org/4jhOC5QlLF
+
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int binarySearch(int arr[], int low, int high, int x) {
+
+    if(low <= high) {
+        int mid = (low + high)/2;
+        
+        if(arr[mid] == x) {
+            return mid;
+        }
+        else if(x > arr[mid]) {
+            return binarySearch(arr, mid+1, high, x);
+        }
+        else {
+            return binarySearch(arr, low, mid-1, x);
+        }
+    }
+    return -1;
+}
+/*
+int Last(int arr[], int low, int high, int x, int n) {
+    
+    if(low <= high) {
+        int mid = (low + high)/2;
+        
+        if(arr[mid] == x) {
+            return mid;
+        }
+        else if(x > arr[mid]) {
+            return Last(arr, mid+1, high, x, n);
+        }
+        else {
+            return Last(arr, low, mid-1, x, n);
+        }
+    }
+    return -1;
+}
+*/
+int CountOccurence(int arr[], int n, int x) {
+    int ind = binarySearch(arr, 0, n - 1, x);
+ 
+    // If element is not present
+    if (ind == -1)
+        return 0;
+ 
+    // Count elements on left side.
+    int count = 1;
+    int left = ind - 1;
+    while (left >= 0 && arr[left] == x)
+        count++, left--;
+ 
+    // Count elements on right side.
+    int right = ind + 1;
+    while (right < n && arr[right] == x)
+        count++, right++;
+ 
+    return count;
+}
+
+int main() {
+	int arr[] = { 1, 2, 2, 2, 2, 3, 4, 7, 8, 8 };  
+
+	int n = sizeof(arr)/sizeof(arr[0]);
+	int x = 2;
+	cout<<CountOccurence(arr, n, x);
+	return 0;
+}
