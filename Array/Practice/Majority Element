@@ -1,0 +1,49 @@
+// Find the majority element in an array which occur greater then n/2 times. if none element is there then return -1.
+
+// URL: 
+
+// CODE
+// Moore's voting algorithm (find majority element)
+#include <iostream>
+using namespace std;
+
+int majorityElement(int arr[], int n) {
+    int count = 1, res=0;
+    //step-1
+    for(int i=1; i<n; i++) {
+      if(arr[i] == arr[res]) {
+          count++;
+      }  
+      else {
+          count--;
+      }
+      
+      if(count == 0) {
+          count = 1;
+          res = i;
+      }
+    }
+    
+    //step-2
+    // check wheteher really the resultant index we got is majority element or not.
+    count=0;
+    for(int i=0; i<n; i++) {
+        if(arr[i] == arr[res]) {
+            count++;
+        }
+    }
+    if(count <= n/2) {
+        return -1;
+    }
+    else {
+        return arr[res];
+    }
+}
+
+int main() {
+	int arr[] = {8,8,6,6,6,4,6};
+	int n = sizeof(arr)/sizeof(arr[0]);
+	cout<<"majority element: ";
+	cout<<majorityElement(arr, n);
+	return 0;
+}
