@@ -1,6 +1,8 @@
 // Search Element in Linked List
 
--> It's a very simple single function program
+-> It's a very simple single function program can be implemented usig 2 approaches 
+
+1) Iteractive approach
 
 void Search(struct node *head, int item) {
     struct node *ptr;
@@ -13,3 +15,18 @@ void Search(struct node *head, int item) {
         ptr = ptr->next;
     }
 }
+
+2) Recursive Approach
+
+bool Search(struct Node *head, int se) {
+    if(head == NULL) {
+        return false;
+    }
+    else if(head->data == se) {
+        return true;
+    }
+    else {
+        return Search(head->next, se);
+    }
+} 
+
