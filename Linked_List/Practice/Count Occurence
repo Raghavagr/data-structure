@@ -1,0 +1,20 @@
+// Write a function that counts the number of times a given int occurs in a Linked List
+
+class Solution
+{
+    public:
+    //function to count occ
+    int count(struct node* head, int se)
+    {
+        //add your code here
+        struct node *ptr = head;
+        int count = 0;
+        while(ptr != NULL) {
+            if(ptr->data == se) {
+                count++;
+            }
+            ptr = ptr->next;
+        }
+     return count;
+    }
+};
