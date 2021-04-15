@@ -1,0 +1,34 @@
+// LENGTH OF LINKED IST USING ITERACTIVE AND RECURSIVE APPROACH
+
+#include <stdio.h>
+
+//Function to count nodes of a linked list.
+// Iterative approach
+int getCount(struct Node* head){
+    
+    //Code here
+    struct Node *ptr = head;
+    int count = 0;
+    while(ptr != NULL) {
+        count++;
+        ptr = ptr->next;
+    }
+        
+    return count;
+}
+
+// Recursive approach
+int getCount2(struct Node *head) {
+    int count = 0;
+    if(head == NULL) {
+        return 0;
+    }
+    
+    return 1 + getCount2(head->next);
+}
+
+int main() {
+	//code
+	
+	return 0;
+}
