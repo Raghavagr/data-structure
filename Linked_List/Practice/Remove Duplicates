@@ -1,0 +1,85 @@
+// Remove duplicates from a sorted linked list
+
+// APPROACH -1
+
+- It is very simple take a current pointer to head and iterate over linked list.
+- and a next ponter which takes next node of current.
+- compare the current node data with next Node data and it both are equal the point current node next to next node next.
+- free the current next.
+
+IMPLEMENTATION
+
+//Function to remove duplicates from sorted linked list.
+Node *removeDuplicates(Node *head)
+{
+ // your code goes here
+ struct Node *current = head;
+ struct Node *next_node;
+ 
+ if(current == NULL) {
+     return current;
+ }
+ 
+ while(current->next != NULL) {
+     if(current->data == current->next->data) {
+         next_node = current->next->next;
+         free(current->next);
+         current->next = next_node;
+     }
+     else {
+         current = current->next;
+     }
+ }
+ return head;
+}
+
+
+// APPROACH - 2
+
+Create a pointer that will point towards the first occurrence of every element and another pointer temp which will iterate to every element and 
+when the value of the previous pointer is not equal to the temp pointer, 
+we will set the pointer of the previous pointer to the first occurrence of another node.
+
+// IMPLEMENTATION
+Node *removeDuplicates(Node *head)
+{
+   
+    // Two references to head
+    // temp will iterate to the
+    // whole Linked List
+    // prev will point towards
+    // the first occurence of every element
+    Node *temp = head,*prev=head;
+ 
+    // Traverse list till the last node
+    while (temp != NULL)
+    {
+ 
+       // Compare values of both pointers
+       if(temp->data != prev->data)
+       {
+          
+         /* if the value of prev is
+         not equal to the value of
+         temp that means there are no
+         more occruences of the prev data->
+         So we can set the next of
+         prev to the temp node->*/
+         prev->next = temp;
+         prev = temp;
+       }
+       
+        /*Set the temp to the next node*/
+        temp = temp->next;
+    }
+   
+  /*This is the edge case if there
+  are more than one occurrences
+  of the last element*/
+  if(prev != temp)
+  {
+        prev->next = NULL;
+    }
+  return head;
+}
+
