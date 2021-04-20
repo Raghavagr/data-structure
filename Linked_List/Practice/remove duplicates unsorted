@@ -1,0 +1,35 @@
+// Remove Duplicates from an unsorted linked list
+
+// APPROACH - 1  (BRUTE-Force)
+  COMPLEXITY = O(N^2)
+  
+  // we have implemented this technique in another file.
+  
+// APPROACH - 2 (HASHING)
+  complexity = O(N)
+
+We traverse the link list from head to end. For every newly encountered element, 
+we check whether it is in the hash table: if yes, we remove it; otherwise we put it in the hash table.
+
+// implementation
+
+Node * removeDuplicates(Node *head) {
+        unordered_set<int> seen;
+        
+        //pick element one by one
+        struct Node *curr = head;
+        struct Node *prev = NULL;
+        while(curr != NULL) {
+            // if curr value is seen before in hash
+            if(seen.find(curr->data) != seen.end()) {
+                prev->next = curr->next;
+                free(curr);
+            }
+            else {
+                seen.insert(curr->data);
+                prev = curr;
+            }
+            curr = prev->next;
+        }
+        return head;
+    }
