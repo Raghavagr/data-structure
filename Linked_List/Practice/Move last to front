@@ -1,0 +1,28 @@
+// Move last element to front of a given Linked List
+
+// que) Write a function that moves the last element to the front in a given Singly Linked List.
+    For example, if the given Linked List is 1->2->3->4->5, then the function should change the list to 5->1->2->3->4.
+    
+ALGORITHM:
+
+APPROACH is very simple that,
+- take 2 pointer as last and second last.
+- iterate through list till lst is not NULL
+- make the next of second last node as NULL
+- AND next of last as head and head equal to last.
+
+// IMPLEMENTATION
+
+void move_to_first(struct Node *head) {
+    struct Node *last, *seclast;
+    last = head;
+    while(last != NULL) {
+        seclast = last;
+        last = last->next;
+    }
+    
+    //mark next of seclast as NULL
+    seclast->next = NULL;
+    last->next = head;
+    head = last;
+}
