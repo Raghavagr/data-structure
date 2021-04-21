@@ -1,0 +1,56 @@
+// Intersection of two Sorted Linked Lists
+
+Method 1: Using Dummy Node. 
+Approach: 
+The idea is to use a temporary dummy node at the start of the result list. 
+The pointer tail always points to the last node in the result list, so new nodes can be added easily. 
+The dummy node initially gives tail a memory space to point to. This dummy node is efficient, since it is only temporary, and it is allocated in the stack. 
+The loop proceeds, removing one node from either ‘a’ or ‘b’ and adding it to tail. 
+When the given lists are traversed the result is in dummy.next as the values are allocated from next node of the dummy.
+If both the elements are equal then remove both and insert the element to the tail. Else remove the smaller element among both the lists. 
+
+// IMPLEMENTATION
+
+Node* sortedIntersect(Node* a, Node* b)
+{
+    Node dummy;
+    Node* tail = &dummy;
+    dummy.next = NULL;
+ 
+    /* Once one or the other
+    list runs out -- we're done */
+    while (a != NULL && b != NULL) {
+        if (a->data == b->data) {
+            push((&tail->next), a->data);
+            tail = tail->next;
+            a = a->next;
+            b = b->next;
+        }
+        /* advance the smaller list */
+        else if (a->data < b->data)
+            a = a->next;
+        else
+            b = b->next;
+    }
+    return (dummy.next);
+}
+ 
+/* UTILITY FUNCTIONS */
+/* Function to insert a node at
+the beginning of the linked list */
+void push(Node** head_ref, int new_data)
+{
+    /* allocate node */
+    Node* new_node = (Node*)malloc(
+        sizeof(Node));
+ 
+    /* put in the data  */
+    new_node->data = new_data;
+ 
+    /* link the old list off the new node */
+    new_node->next = (*head_ref);
+ 
+    /* move the head to point to the new node */
+    (*head_ref) = new_node;
+}
+ 
