@@ -1,0 +1,59 @@
+//  Segregate even and odd nodes in a Linked List
+
+// IMPLEMENTATION
+class Solution{
+public:
+    Node* divide(int N, Node *head){
+        // code here
+        Node *evenstart = NULL;
+        Node *evenend = NULL;
+        Node *oddstart = NULL;
+        Node *oddend = NULL;
+        
+        Node *current = head;
+        
+        while(current != NULL) {
+            val = current->data;
+            
+            if(val %2 == 0) {
+                if(evenstart == NULL) {
+                    evenstart = current;
+                    evenend = evenstart;
+                }
+                else {
+                    evenend->next = current;
+                    evenend = evenend->next;
+                }
+            }
+            
+            else {
+                if(oddstart == NULL) {
+                    oddstart = current;
+                    oddend = oddstart;
+                }
+                else {
+                    oddend->next = current;
+                    oddend = oddend->next;
+                }
+            }
+            
+            current = current->next;
+        }
+        
+        // If either odd list or even list is empty,
+        // no change is required as all elements 
+        // are either even or odd.
+        if(oddstart == NULL || evenstart == NULL) {
+            return head;
+        }
+        
+        // Add odd list after even list
+        evenend->next = oddstart;
+        oddend->next = NULL;
+        
+        // return head
+        head = evenstart;
+        return head;
+    
+    }
+};
