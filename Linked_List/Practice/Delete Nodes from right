@@ -1,0 +1,74 @@
+// Delete nodes which have a greater value on right side
+
+Given a singly linked list, remove all the nodes which have a greater value on right side. 
+Examples: 
+a) The list 12->15->10->11->5->6->2->3->NULL should be changed to 15->11->6->3->NULL.
+    Note that 12, 10, 5 and 2 have been deleted because there is a greater value on the right side. 
+
+Explanation:  When we examine 12, we see that after 12 there is one node with value greater than 12 (i.e. 15), so we delete 12. 
+
+// APPRACH TO SOLVE
+// METHOD-1(USE 2 LOOPS)
+
+THIS IS BRUTE FORCE APPRACH OF USING 2 LOOPS with a complexity of O(N^2)
+
+// METHOD -2(REVERSE)  COMPLEXITY -> O(N)
+
+ALGORITHM
+1. Reverse the list. 
+2. Traverse the reversed list. Keep max till now. If next node is less than max, then delete the next node, otherwise max = next node. 
+3. Reverse the list again to retain the original order. 
+ 
+ Time Complexity: O(n)
+
+// IMPLEMENTATION
+
+class Solution
+{
+    public:
+    Node *compute(Node *head)
+    {
+        // your code goes here
+        Node *ptr = head;
+        head = reverselist(ptr);
+        
+        head = deletegreater(head);
+        
+        head = reverselist(head);
+        
+        return head;
+    }
+    
+    Node *deletegreater(Node *head_ref) {
+        Node *current = head_ref;
+        Node *maxnode = head_ref;
+        Node *temp;
+        while(current != NULL && current->next != NULL) {
+            if(current->next->data < maxnode->data) {
+                temp = current->next;
+                current->next = temp->next;
+                free(temp);
+            }
+            else {
+                current = current->next;
+                maxnode = current;
+            }
+        }
+        return head_ref;
+    }
+    
+    Node *reverselist(Node *head_ref) {
+        Node *current = head_ref;
+        Node *next_node;
+        Node *prev = NULL;
+        while(current != NULL) {
+            next_node = current->next;
+            current->next = prev;
+            prev = current;
+            current = next_node;
+        }
+        head_ref = prev;
+        return head_ref;
+    }
+    
+};
