@@ -1,0 +1,38 @@
+// Split a Circular Linked List into two halves
+
+Given a Cirular Linked List of size N, split it into two halves circular lists. 
+If there are odd number of nodes in the given circular linked list then out of the resulting two halved lists, first list should have one node more than the second list. 
+The resultant lists should also be circular lists and not linear lists.
+
+// IMPLEMENTATION
+void splitList(Node *head, Node **head1_ref, Node **head2_ref)
+{
+    // your code goes here
+    Node *slow_ptr = head;
+    Node *fast_ptr = head;
+    
+    while(fast_ptr->next != head && fast_ptr->next->next != NULL) {
+        slow_ptr = slow_ptr->next;
+        fast_ptr = fast_ptr->next->next;
+    }
+    
+    /*
+    if(fast_ptr->next->next == head) {
+        fast_ptr = fast_ptr->next;
+    }*/
+    
+    // set ref of 1st list
+    *head1_ref = head;
+    
+    //set head of 2nd list
+    if(head->next != head) {
+        *head2_ref = slow_ptr->next;
+    }
+    
+    // now we have to make list circular
+    // making 2nd list circular
+    fast_ptr->next = slow_ptr->next;
+    
+    //making 1st list circular
+    slow_ptr->next = head;
+}
