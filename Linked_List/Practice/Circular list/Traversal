@@ -1,0 +1,16 @@
+// QUE) Given a circular linked list, your task is to complete the method printList() that prints the linked list.
+
+// IMPLEMENTATION
+
+void printList(struct Node *head)
+{
+  // code here
+  struct Node *ptr = head;
+  if(ptr != NULL) {
+      do {
+          printf("%d ", ptr->data);
+          ptr = ptr->next;
+      }
+      while(ptr != head);
+  }
+}
