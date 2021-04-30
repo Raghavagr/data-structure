@@ -1,0 +1,29 @@
+// Check if a linked list is Circular Linked List
+
+-> It is a very simple program where we have to iterate and check if next of node is NULL or head.
+ -> If it is head the return true else False
+ 
+ // Implementation
+ 
+ /* Should return true if linked list is circular, else false */
+bool isCircular(Node *head)
+{
+   // Your code here
+   struct Node *ptr = head;
+   // empty list is circular in nature.
+   if(head == NULL) {
+       return true;
+   }
+   
+   while(ptr->next != NULL && ptr->next != head) {
+       ptr = ptr->next;
+   }
+   
+   if(ptr->next == NULL) {
+       return false;
+   }
+   else {
+       return true;
+   }
+   
+}
