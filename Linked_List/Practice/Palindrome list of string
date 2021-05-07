@@ -1,0 +1,43 @@
+// QUE) check linked list of strings forms a palindrome
+
+// USING C++
+
+bool isPalindrome(string str) {
+    int len = str.length();
+    
+    for(int i=0; i<len/2; i++) {
+        if(str[i] != str[len-i-1]) {
+            return false;
+        }
+    }
+    return true;
+} 
+
+bool compute(Node* head)
+{
+   //Your code goes here
+   string st = "";
+   while(head != NULL) {
+       st.append(head->data);
+       head = head->next;
+   }
+   
+   return isPalindrome(st);
+}
+
+// USING PYTHON
+def compute(head): 
+    #return True/False
+    ptr = head
+    temp = []
+    while (ptr is not None):
+        temp.append(ptr.data)
+        ptr = ptr.next
+        
+    st = "".join(temp)
+    
+    if(st == st[::-1]):
+        return True
+    else:
+        return False
+    
