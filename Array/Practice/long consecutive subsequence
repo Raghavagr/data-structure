@@ -1,0 +1,42 @@
+// Find Longest consecutive subsequence in an array
+
+QUE) Given N elements, write a program that prints the length of the longest increasing subsequence whose adjacent element difference is one. 
+
+// SOL - URL-   https://ide.geeksforgeeks.org/PLC6t8FTtQ
+
+// CODE
+
+#include <iostream>
+#include<algorithm>
+using namespace std;
+
+int largestConsecutive(int arr[], int n) {
+    int count = 1;
+    //sort array 
+    sort(arr, arr+n);
+    
+    int max = 0;
+    int max_len;
+    for(int i=0; i<n; i++) {
+        if(arr[i]+1 != arr[i+1]) {
+            max_len = i-max;
+            if(max_len > max) {
+                max = max_len;
+            }
+        }
+    }
+    cout<<"longest consecutive subseuence: "<<max+1<<endl;
+}
+
+int main() {
+	int arr[100];
+	int n;
+	cout<<"enter size of array"<<endl;
+	cin>>n;
+	cout<<"enter array elements"<<endl;
+	for(int i=0; i<n; i++) {
+	    cin>>arr[i];
+	}
+	largestConsecutive(arr, n);
+	return 0;
+}
