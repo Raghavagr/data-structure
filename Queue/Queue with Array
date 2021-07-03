@@ -1,0 +1,76 @@
+// Implement Queue using ARRAY
+
+// URL: https://ide.geeksforgeeks.org/NFGYJTUVm5
+
+//code
+#include <stdio.h>
+#include<stdlib.h>
+
+struct Queue {
+    int size;
+    int f;  //front ptr 
+    int r;  // rear ptr 
+    int *arr;
+};
+
+int isEmpty(struct Queue *que) {
+    if(que->f == que->r) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+
+int isFull(struct Queue *que) {
+    if(que->r == que->size-1) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+
+int Enque(struct Queue *que, int item) {
+    if(isFull(que)) {
+        printf("\nQueue overflow");
+    }
+    else {
+        que->arr[que->r] = item;
+        que->r = que->r + 1;
+        printf("\n%d Enqued successfully", item);
+    }
+}
+
+int Deque(struct Queue *que) {
+    if(isEmpty(que)) {
+        printf("\nQueue Empty!!");
+    }
+    else {
+        int x = que->arr[que->f];
+        que->f = que->f + 1;
+        printf("\n%d Dequed from queue", x);
+    }
+}
+
+int PrintQueue(struct Queue *que) {
+    printf("\nPrinting Queue\n");
+    for(int i=que->f; i<que->r; i++) {
+        printf("%d ", que->arr[i]);
+    }
+}
+
+int main() {
+	struct Queue que;
+	que.size = 5;
+	que.f = 0;
+	que.r = 0;
+	
+	Enque(&que, 7);
+	Enque(&que, 9);
+	Enque(&que, 14);
+	PrintQueue(&que);
+	Deque(&que);
+	PrintQueue(&que);
+	return 0;
+}
