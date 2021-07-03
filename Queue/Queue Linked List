@@ -1,0 +1,68 @@
+// Implement Queue using Linked List
+
+// URL : https://ide.geeksforgeeks.org/oI1fFNH9Sr
+
+	//code
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node *next;
+};
+
+struct Node *f = NULL;
+struct Node *r = NULL;
+
+void PrintQueue(struct Node *que) {
+    printf("\nPrinting queue");
+    while(que != NULL){
+        printf("%d ", que->data);
+        que = que->next;
+    }
+}
+
+void Enque(int item) {
+    struct Node *temp = (struct Node *)malloc(sizeof(struct Node));
+    if(temp == NULL) {
+        printf("\nque is Full");
+    }
+    
+    else {
+        temp->data = item;
+        temp->next = NULL;
+        //queue is empty then new node is only node
+        if(f == NULL) {  
+            f=r=temp;
+        }
+        else {
+            r->next = temp;
+            r = temp;
+        }
+        printf("\n Element enqued successfully");
+    }
+}
+
+void Deque() {
+    struct Node *ptr = f;
+    //if queue empty
+    if(f == NULL) {
+        printf("\nqueue is empty");
+    }
+    else {
+        f = f->next;
+        int val = ptr->data;
+        free(ptr);
+        printf("\n%d is dequeue", val);
+    }
+}
+
+int main() {
+    Enque(7);
+    Enque(10);
+    Enque(40);
+    PrintQueue(f);
+    Deque();
+    PrintQueue(f);
+	return 0;
+}
