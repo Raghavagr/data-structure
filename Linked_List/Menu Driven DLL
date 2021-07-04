@@ -1,0 +1,156 @@
+// WAP for implementing operations of Doubly Linked List
+
+// URL - https://ide.geeksforgeeks.org/XDYyWI8ODu
+
+//code
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node *next; //next ptr ref
+    struct Node *prev; // prev ptr 
+};
+
+//struct Node *head;
+
+void traverseList(struct Node *head) {
+    struct Node *ptr = head;
+    if(ptr == NULL) {
+        printf("\nList Empty");
+    }
+    else {
+        printf("\nPrinting List elements\n");
+        while(ptr != NULL) {
+            printf("%d ", ptr->data);
+            ptr = ptr->next;
+        }
+    }
+}
+
+// ** Insertion Operation ** \\
+//Case-1
+struct Node *insertAtBegin(struct Node *head, int item) {
+    struct Node *ptr = (struct Node *)malloc(sizeof(struct Node));
+    if(ptr == NULL) {
+        printf("\nList Overflow");
+    }
+    else {
+        if(head==NULL)
+        {
+            ptr->data=item;
+            ptr->prev=NULL;
+            ptr->next=NULL;
+            head=ptr;
+        }
+        else {
+            ptr->data = item;
+            ptr->next = head;
+            ptr->prev = NULL;
+            head->prev = ptr;
+            head = ptr;
+        }
+    }
+    return head;
+}
+
+//case-2
+struct Node *insertAtEnd(struct Node *head, int item) {
+    struct Node *ptr = (struct Node *)malloc(sizeof(struct Node));
+    struct Node *temp = head;
+    
+    while(temp->next != NULL) {
+        temp = temp->next;
+    }
+    
+    temp->next = ptr;
+    ptr->data = item;
+    ptr->prev = temp;
+    ptr->next = NULL;
+    return head;
+}
+
+struct Node *insertAtRandom(struct Node *head, int item, int index) {
+    struct Node *ptr = (struct Node *)malloc(sizeof(struct Node));
+    struct Node *temp = head;
+    int i=0;
+    
+    while(i != index-1) {
+        i++;
+        temp = temp->next;
+    }
+    
+    ptr->data = item;
+    ptr->next = temp->next;
+    temp->next = ptr;
+    ptr->prev = temp;
+    temp->next->prev = ptr;
+    
+    return head;
+    
+}
+
+//  /* delete Operations */
+struct Node *deleteAtBegin(struct Node *head) {
+    struct Node *ptr = head;
+    if(head == NULL) {
+        printf("\nList Empty");
+    }
+    else {
+        head = head->next;
+        head->prev = NULL;
+        free(ptr);
+        printf("\nNode deleted successfully");
+    }
+    return head;
+}
+
+struct Node *deleteAtLast(struct Node *head) {
+    struct Node *ptr = head;
+    struct Node *temp = head->next;
+    if(ptr == NULL) {
+        printf("\nList empty");
+    }
+    else if(head->next == NULL) {
+        head = NULL;
+        free(head);
+    }
+    else {
+        while(temp->next != NULL) {
+            temp = temp->next;
+            ptr = ptr->next;
+        }
+        ptr->next = NULL;
+        free(temp);
+    }
+    return head;
+}
+
+struct Node *deleteAtRandom(struct Node *head, int index) {
+    struct Node *ptr = head;
+    struct Node *temp = head->next;
+    int i=0;
+    while(i != index-1) {
+        ptr = ptr->next;
+        temp = temp->next;
+        i++;
+    }
+    
+    ptr->next = temp->next;
+    temp->next->prev = ptr;
+    free(temp);
+    
+    return head;
+}
+
+int main() {
+	struct Node *head;
+	//head = (struct Node *)malloc(sizeof(struct Node));
+	head = insertAtBegin(head, 10);
+	head = insertAtEnd(head, 50);
+	head = insertAtRandom(head, 20, 1);
+	traverseList(head);
+	head = deleteAtRandom(head, 1);
+	traverseList(head);
+	return 0;
+}
